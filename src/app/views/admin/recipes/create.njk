@@ -1,0 +1,21 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+    <div class="comum_div">
+        <form class="form-newrecipe" onsubmit="notice(event)" method="post" action="/recipes" enctype="multipart/form-data">
+            <div class="adm-recipe">
+
+                <div style="float:left">
+                    <label >Criando Receita</label>
+                </div>
+                <div style="float:right">
+                    <button id="sav" type="submit">Salvar Receita</button>
+                </div>
+            </div>
+
+            {% include "admin/recipes/fields.njk" %}
+        </form>
+    </div>
+
+{% endblock %}

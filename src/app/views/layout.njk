@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/styles.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Foodfy</title>
+  </head>
+
+  <body>
+    <div class="menu">
+      <div class="img_logo">
+        <a href="/"><img src="/logo2.png"></a>
+      </div>
+      {% include "parts/header.njk" %}
+    </div>
+
+    {% block content %}{% endblock %}
+
+    {% include "parts/footer.njk" %}
+ <script src="/scripts.js"></script>
+  </body>
+</html>

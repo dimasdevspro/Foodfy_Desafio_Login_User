@@ -1,0 +1,21 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+    <div class="comum_div">
+      <form class="form-newchef" method="post" action="/chefs?_method=PUT" enctype="multipart/form-data">
+            <div class="adm-chef">
+                <div style="float:left">
+                    <label >Editando Chef</label>
+                </div>
+                <div style="float:right">
+                    <button id="sav" type="submit">Salvar chef</button>
+                </div>
+            </div>
+                {% include "admin/chefs/fields.njk"%}
+            <input type="hidden" name="id" value="{{chef.id}}">
+            <input type="hidden" name="file_id" value="{{dataFile[0].file_id}}">
+        </form>
+    </div>
+    <script src="/scripts.js"></script>
+
+{% endblock %}

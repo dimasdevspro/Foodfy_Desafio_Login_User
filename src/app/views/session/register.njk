@@ -1,0 +1,33 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+    <div class="comum_div">
+        <form style="position: absolute;width: 940px; "id="form-cancel" method="post" action="/user?_method=DELETE" >
+          <input type="hidden" name="id" value="{{user.id}}">
+            <div class="admin-user" style="margin-left: 800px;">
+                <button id="cancel" type="submit">Cancelar</button>
+            </div>
+        </form> 
+        <form class="form-newadmin" method="post" action="admin/user?_method=PUT">
+            <div class="adm-user">
+                <div style="float:left">
+                    <label >Criar Usuário</label>
+                </div>
+                <div style="float:right">
+                    <button id="sav2" type="submit">Salvar</button>
+                </div>
+            </div>
+                {% include "session/fields.njk"%}
+            <input type="hidden" name="id" value="{{user.id}}">
+        </form>
+    </div>
+<script>
+    const formCancel = document.querySelector("#form-cancel");
+formCancel.addEventListener("submit", function (event) {
+    const confirmation = confirm("Deseja Cancelar?")
+    if (!confirmation) {
+        event.preventDefault();
+    }
+})
+</script>
+{% endblock %}

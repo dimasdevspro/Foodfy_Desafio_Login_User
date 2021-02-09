@@ -1,0 +1,49 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+  <div id="admin-recipe-title">
+    <p>Gerenciar Receitas</p>
+  <div class="header">
+    <a id="button-create" href="/recipes/create">Cadastrar</a>
+      <form action="/recipes/search" method="GET">
+        <input 
+        type="text" 
+        name="filter" 
+        placeholder="Filtrar por Receita"
+        value="{{filter}}"
+        >
+        <button id="button-filter" type="submit">Filtrar</button>
+      </form>
+    </div>
+  </div>
+
+  <section class="cards_recipes">
+
+    {% for recipe in recipes %}
+
+      <section class="card_link1">
+        <div class="img_recipe">
+          <img src="{{recipe.path}}" alt="{{recipe.filename}}"/>
+        </div>
+      </section>
+      <section class="card_link2">
+        <div class="title_recipe">
+          <p>{{recipe.title}}</p>
+        </div>
+        <div class="author_recipe">
+          <p>por {{recipe.author}}</p>
+        </div>
+        <a href="/recipes/{{recipe.recipes_id}}" class="link-view">Visualizar</a>
+      </section>
+    {% endfor %}
+
+  </section>
+  <div 
+  class="pagination" 
+  data-page={{pagination.page}} 
+  data-total={{pagination.total}}
+  data-filter={{filter}}
+  ></div>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% block content %}
+            <div class="field user">
+                <div class="field user input">
+                   <p>Nome</p>
+                    <input type="text" name="name" id="nam" value="{{user.name}}" placeholder="Digite o nome completo">
+                </div>
+                
+            <div class="field user input">
+                  <p>Email</p>
+                    <input type="email" name="email" id="email" value="{{user.email}}" placeholder="Digite seu e-mail">
+                </div>            
+            </div>
+           <div class="field user radio">
+                    <input type="checkbox" name="is_admin" id="is_admin" value="{{user.is_admin}}" {% if chef.is_admin == true %} checked {%endif%}>
+                    <p>Administrador?</p>
+           </div>
+{% endblock %}
