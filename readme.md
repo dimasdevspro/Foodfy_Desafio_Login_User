@@ -20,20 +20,21 @@
 ### Sobre 
 [↩](#indice)
 
-<p>Atualização do projeto, com página de busca de receitas reorganizada para busca ordenada e específica, conforme o desafio do Bootcamp Launchbase:</p>
+<p>Desenvolvimento de Acesso à usuários com restrições:</p>
 <ul >
- <li><a href="https://github.com/rocketseat-education/bootcamp-launchbase-desafios-08/blob/master/desafios/08-apresentacao-organizacao-receitas-foodfy.md" target="_blank">Desafio Foodfy;</a></li>
+ <li><a href="https://github.com/rocketseat-education/bootcamp-launchbase-desafios-10" target="_blank">Desafio Foodfy;</a></li>
 </ul>
 <p>Detalhes do Projeto:</p>
 <ul>
- <li>Melhorias na listagem de receitas.</li>
+ <li>Inserção de páginas de login, cadastro e resgate de senha;</li>
+ <li>Restrição de acesso à usuários pelo administrador.</li>
 </ul>
 
 ### Status do Projeto 
 [↩](#indice)
 
 <h4> 	
-Concluído
+Em andamento.
 </h4>
 
 ### Histórico do Projeto 
@@ -47,6 +48,7 @@ Concluído
 <li><a href="https://github.com/dimasdevspro/Desafio_Foodfy_Persistindo_Dados">Persistindo Dados</a></li>
 <li><a href="https://github.com/dimasdevspro/Desafio_Foodfy_">Envio de Imagens Foodfy</a></li>
 <li><a href="https://github.com/dimasdevspro/Foodfy_Desafio_Upload_Imagens">Upload de Imagens Foodfy<a></li>
+<li><a href="https://github.com/dimasdevspro/Foodfy_Desafio_Listando_Receitas">Listando Receitas Foodfy<a></li>
 </ul>
 
 
@@ -60,15 +62,14 @@ Concluído
 - [x] Gerenciar receitas - atualizado com Gerenciador de Imagens
 - [x] Banco de Dados
 - [x] Filtro com busca ordenada
+- [x] Reorganizaçao de listagem de receitas
+- [x] Páginas de Login, Cadastro e Resgate de Senha
 
 
 ### Demonstração da Aplicação 
 [↩](#indice)
 
-<h1 align="center"><img src="screenshots/Foodfy_Listando_Receitas.gif" height="350" weigth="350"></h1>
-
-
-
+Não disponível.
 
 ### Pré-requisitos 
 [↩](#indice)
@@ -98,10 +99,10 @@ $ https://code.visualstudio.com/
 # Acesse o terminal/cmd de sua plataforma (Win, Linux, etc)
 
 # Clone este repositório com o seguinte comando abaixo
-$ git clone https://github.com/dimasdevspro/Foodfy_Desafio_Listando_Receitas
+$ git clone https://github.com/dimasdevspro/Foodfy_Desafio_Login_User
 
 # Ainda no terminal, acesse a pasta com mais um comando
-$ cd Foodfy_Desafio_Listando_Receitas
+$ cd Foodfy_Desafio_Login_User
 
 # Agora digite este comando, para editar/testar o projeto
 $ code .
@@ -111,7 +112,7 @@ $ code .
 ### Instalação de Dependências 
 [↩](#indice)
 
-Instalação de Dependências "Express", "Nodemon", "Nunjucks", "Browsersync", "MethodOverride", "Postgre", "Multer" para rodar aplicação.
+Instalação de Dependências "Express", "Nodemon", "Nunjucks", "Browsersync", "MethodOverride", "Postgre", "Multer", "Cryptjs", "Nodemailer", "Express Session", "Connect-pg-simple" para rodar aplicação.
 
 ```bash
 # Abra o terminal do VSCode na Aba "Terminal"
@@ -139,7 +140,7 @@ $ npm install browser-sync npm-run-all
 "scripts": {
     "start": "npm-run-all -p nodemon browser-sync",
     "nodemon": "nodemon src/server.js",
-    "browser-sync": "browser-sync start --proxy http://localhost:3336 --files 'public, src/app/admin, src/app/views'"
+    "browser-sync": "browser-sync start --proxy http://localhost:3338 --files 'public, src/app/admin, src/app/views'"
   },
 
 # Digite o comando no terminal para instalar o "Postgre"
@@ -147,6 +148,18 @@ $ npm install pg
 
 # Digite o comando no terminal para instalar o "Multer"
 $ npm install multer
+
+# Digite o comando no terminal para instalar o "Cryptjs"
+$ npm install cryptjs
+
+# Digite o comando no terminal para instalar o "Nodemailer"
+$ npm install nodemailer
+
+# Digite o comando no terminal para instalar o "Express Session"
+$ npm install express session
+
+# Digite o comando no terminal para instalar o "Connect-pg-simple"
+$ npm install connect-pg-simple
 
 # Digite no terminal o seguinte comando para rodar o servidor
 $ npm start

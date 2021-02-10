@@ -1,17 +1,32 @@
 {% block content %}
-            <div class="field user">
-                <div class="field user input">
-                   <p>Nome</p>
-                    <input type="text" name="name" id="nam" value="{{user.name}}" placeholder="Digite o nome completo">
-                </div>
-                
+    <div class="field user">
+        <div class="field user input">
+            <p>Nome</p>
+            <input type="text" name="name" id="nam" value="{{user.name}}" placeholder="Digite o nome completo">
+        </div>
+
+        <div class="field user input">
+            <p>Email</p>
+            <input type="email" name="email" id="email" value="{{user.email}}" placeholder="Digite seu e-mail" onblur="Validate.apply(this, 'isEmail')">
+        </div>
+    </div>
+    <div class="field user">
+        <div class="field user input">
+            <p>Senha</p>
+            <input type="password" name="password" id="passr" value="{{user.password}}" placeholder="Escolha uma senha segura">
+        </div>
+        {% if not user.id %}
             <div class="field user input">
-                  <p>Email</p>
-                    <input type="email" name="email" id="email" value="{{user.email}}" placeholder="Digite seu e-mail">
-                </div>            
+                <p>Repita a Senha</p>
+                <input type="password" name="passwordRepeat" id="pass" value="{{user.name}}" placeholder="Repita a senha segura">
             </div>
-           <div class="field user radio">
-                    <input type="checkbox" name="is_admin" id="is_admin" value="{{user.is_admin}}" {% if chef.is_admin == true %} checked {%endif%}>
-                    <p>Administrador?</p>
-           </div>
-{% endblock %}
+        {% endif %}
+    </div>
+
+
+<div class="field user radio">
+    <input type="checkbox" name="is_admin" id="is_admin" value="{{user.is_admin}}" {% if chef.is_admin == true %} checked="checked" {%endif%}>
+    <p>Administrador?</p>
+</div>
+
+    {% endblock %}

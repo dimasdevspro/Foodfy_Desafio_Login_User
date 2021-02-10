@@ -398,6 +398,7 @@ h4 {
     color: #999999;
     text-align: center;
     padding: 25px 0;
+  
 }
 
 /*=============PAGE ABOUT=============*/
@@ -465,7 +466,8 @@ h4 {
 }
 
 #button-create,
-#button-filter {
+#button-filter,
+.button-register {
   text-decoration: none;
   width: 100px;
   height: 40px;
@@ -492,6 +494,7 @@ form {
 .form-newadmin,
 .form-login {
   height: 430px;
+  
 }
 
 #sav,
@@ -522,7 +525,7 @@ form {
 }
 .field label {
   display: block;
-  font-size: 16px;
+  font-size: 24px;
   font-weight: bold;
   color: #111111;
   margin: 30px 0px 10px;
@@ -899,8 +902,7 @@ form .field-upload-chef #photos-preview .photo img {
   text-decoration: none;
 }
 
-.adm-user,
-.login-user {
+.adm-user {
   width: 750px;
   height: 37px;
   margin-bottom: 24px;
@@ -908,14 +910,57 @@ form .field-upload-chef #photos-preview .photo img {
   font-weight: bold;
   color: #111111;
 }
-.form-login {
-  position: absolute;
-  top: 50%;
-  left: 50%;
 
+.form-login {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
 } 
 
 .field.user-login {
   display: block;
+}
 
+.login-user {
+  width: 450px;
+  height: 37px;
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #111111;
+  text-align: center;
+}
+
+.field_button {
+  width: 450px;
+  display: flex;
+  justify-content: center;
+}
+.button-register {
+  align-items: center;
+
+}
+
+.field_register_forgot-password {
+  width: 450px;
+  margin-bottom: 150px;
+}
+
+.field_register_forgot-password ul{
+  display: flex;
+  justify-content: space-between;
+  width: 450px;
+  list-style: none;
+  text-decoration: none;
+  margin-bottom: 33px;
+}
+
+.field_register_forgot-password ul li a{
+  list-style: none;
+  text-decoration: none;
+  color: black;
+}
+
+.field_register_forgot-password ul li:hover {
+  font-weight: bold;
 }

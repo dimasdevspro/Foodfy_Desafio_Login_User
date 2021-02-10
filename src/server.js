@@ -19,7 +19,7 @@ routes.use(function (req, res) {
   return res.status(404).render("not-found");
 });
 
-server.listen(3337, function () {
+server.listen(3338, function () {
   console.log("Server is running!");
 });
 
