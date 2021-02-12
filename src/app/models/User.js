@@ -2,7 +2,7 @@ const db = require('../../config/db')
 const { hash } = require('bcryptjs')
 
 module.exports = {
- async findOne(filters){
+async findOne(filters){
         try{
              
         let query = "SELECT users.* FROM users"
@@ -25,7 +25,7 @@ module.exports = {
         }
        
     },
-    async create(data) {
+async create(data) {
         try {
             const query = `
             INSERT INTO users (
@@ -43,12 +43,13 @@ module.exports = {
         const values = [
             data.name,
             data.email,
-            passwordHash
+            passwordHash,
+            data.is_admin
         ]
         
         console.log(query, values)
         // const results = await db.query(query, values)
-        // return results.rows[0].id
+        // returns results.rows[0].id
         
         }catch(err){
             console.error(err)

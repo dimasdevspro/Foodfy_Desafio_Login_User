@@ -900,6 +900,7 @@ form .field-upload-chef #photos-preview .photo img {
   outline: none;
   cursor: pointer;
   text-decoration: none;
+  position: relative;
 }
 
 .adm-user {

@@ -1,18 +1,16 @@
-const User = require("../../../../../Projeto_Launchstore_Acess_User/src/app/models/User")
+const session = require('../validators/session')
 
 module.exports = {
-    loginForm(req, res) {
-
-        res.render("session/login.njk")
-    },
     registerForm(req, res){
 
         res.render("session/register.njk")
     },
-    post(req, res){
-       
-        //gravando os dados no db
-console.log(req.body)
-    //    User.create(req.body)
-    }
+    async post(req, res){
+         console.log(req.body)
+        // const userId = await User.create(req.body)
+        
+        // req.session.userId = user_id
+    
+        // return res.redirect('session/login.njk')
+        }
 }
