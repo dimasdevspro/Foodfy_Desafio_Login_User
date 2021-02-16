@@ -4,6 +4,7 @@ const { compare } = require('bcryptjs')
 
 function create(req, res, next){
     //  validando se todos os campos estão preenchidos
+   
      const keys = Object.keys(req.body)
 
      for (key of keys){
@@ -15,20 +16,19 @@ function create(req, res, next){
      
      let {password, passwordRepeat} = req.body
 
-     if (password =! passwordRepeat) res.render("user/register", {
+     if (password != passwordRepeat) res.render("session/register", {
          user: req.body,
          error:"Senhas não conferem!"
      })
-        
-    //  req.user = user
-    //  next()
+      
+     next()
 }
 
 async function login(req, res, next){
 
-    const { email, password } = req.body
+    const { name, password } = req.body
 
-    const user = await User.findOne({where: {email}})
+    const user = await User.findOne({where: {name}})
 
     if (!user) return res.render("session/login", {
         user: req.body,
@@ -43,11 +43,10 @@ async function login(req, res, next){
     })
 
     req.user = user
-    
+   
     next()
 
 }
-
 
 module.exports = {
     create,

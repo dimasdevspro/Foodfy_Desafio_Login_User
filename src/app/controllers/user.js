@@ -1,16 +1,21 @@
 const session = require('../validators/session')
+const User = require('../models/User')
 
 module.exports = {
     registerForm(req, res){
 
         res.render("session/register.njk")
     },
-    async post(req, res){
-         console.log(req.body)
-        // const userId = await User.create(req.body)
+    async loginForm(req, res) {
         
-        // req.session.userId = user_id
+        res.render("session/login.njk")
+    },
+    async post(req, res){
+       
+        const userId = await User.create(req.body)
+
+        req.session.userId = userId
     
-        // return res.redirect('session/login.njk')
+        return res.redirect('/admin/profile')
         }
 }

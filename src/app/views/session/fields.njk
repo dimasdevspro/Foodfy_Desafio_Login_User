@@ -30,6 +30,17 @@
             value="{{user.password}}" 
             placeholder="Escolha uma senha segura">
         </div>
+        {% if user.id %}
+        <div class="field user input">
+            <p>Senha</p>
+            <input 
+            type="password" 
+            name="password" 
+            id="passr" 
+            value="{{user.password}}" 
+            placeholder="Senha atual">
+        </div>
+        {% endif %}
         {% if not user.id %}
             <div class="field user input">
                 <p>Repita a Senha</p>
@@ -37,12 +48,11 @@
                 type="password" 
                 name="passwordRepeat" 
                 id="pass" 
-                value="{{user.name}}" 
+              
                 placeholder="Repita a senha segura">
             </div>
         {% endif %}
     </div>
-
 
 <div class="field user radio">
     <input 

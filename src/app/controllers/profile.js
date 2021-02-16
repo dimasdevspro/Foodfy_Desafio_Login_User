@@ -1,16 +1,14 @@
-
+const User = require('../models/User')
 
 module.exports = {
-    async loginForm(req, res) {
-        
-        res.render("session/login.njk")
-    },
     async post(req, res){
-         console.log(req.body)
-        // const userId = await User.findOne(req.body)
-        
-        // req.session.userId = user_id
+
+        req.session.userId = req.user.id
     
-        // return res.redirect('session/login.njk')
-        }
+        return res.redirect('/admin/profile')
+    },
+    async index(req, res){
+        
+        res.render('session/index.njk')
+    }
 }

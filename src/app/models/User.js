@@ -6,7 +6,7 @@ async findOne(filters){
         try{
              
         let query = "SELECT users.* FROM users"
-
+        
         Object.keys(filters).map(key => {
             query = `${query}
             ${key}
@@ -16,10 +16,10 @@ async findOne(filters){
                 query = `${query} ${field} = '${filters[key][field]}'`
             })
         })
-
+      
         let results = await db.query(query)
-
-        return results.rows[0]
+       
+        return results.rows[0]  
         }catch(err){
             console.error(err)
         }
@@ -39,7 +39,13 @@ async create(data) {
         
         // hash of password
         const passwordHash = await hash(data.password, 8)
-        // console.log(passwordHash)
+        
+        if (data.is_admin === 'on') {
+            data.is_admin = 'true'
+        } else if (data.is_admin === 'undefined'){
+            data.is_admin = 'false'
+        }
+
         const values = [
             data.name,
             data.email,
@@ -47,9 +53,8 @@ async create(data) {
             data.is_admin
         ]
         
-        console.log(query, values)
-        // const results = await db.query(query, values)
-        // returns results.rows[0].id
+        const results = await db.query(query, values)
+        return results.rows[0].id
         
         }catch(err){
             console.error(err)
