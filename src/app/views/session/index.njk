@@ -5,7 +5,7 @@
         <form style="position: absolute; width: 940px; " id="form-del" method="post" action="/admin/user/delete?_method=DELETE">
             <input type="hidden" name="id" value="{{user.id}}">
             <div class="admin-user" style="margin-left: 800px;">
-                <button id="cancel" type="submit">Deletar</button>
+                <button id="del" type="submit">Deletar</button>
             </div>
         </form>
         <form class="form-newadmin" method="post" action="/admin/user/edit">
@@ -13,7 +13,7 @@
                 <div style="float:left">
                     <label>Editar</label>
                 </div>
-                 <button style="float:right" id="sav2" type="submit">Editar</button>
+                 <button style="float:right" id="sav2" type="submit">Salvar</button>
             </div>
             {% include "session/fields.njk" %}
             <input type="hidden" name="id" value="{{user.id}}">

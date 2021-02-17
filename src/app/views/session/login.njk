@@ -3,7 +3,7 @@
 {% block content %}
 
   <section class="form-login">
-    <form method="post" action="/admin/profile">
+    <form method="post" action="/admin/users">
      
       <div class="field user-login">
          <div class="login-user">
@@ -19,18 +19,13 @@
           <input type="password" name="password" id="pass" value="{{user.password}}" placeholder="Digite sua senha">
         </div>
       </div>
-      <div class="field_button">
-      <button class="button-register" type="submit">Acessar</button>
-      </div>
-      <div class="field_register_forgot-password">
-        <ul>
-          <li>
+      <div class="field_acess_forgot-password">
+        
             <a href="/admin/users/forgot-password">Perdeu a senha?</a>
-          </li>
-          <li>
-            <a href="/admin/users/register">Registre-se!</a>
-          </li>
-        </ul>
+        
+      
+        <button class="button-acess" type="submit">Acessar</button>
+      </div>
       </div>
     </form>
   </section>

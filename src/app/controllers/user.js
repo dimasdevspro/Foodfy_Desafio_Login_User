@@ -5,10 +5,12 @@ module.exports = {
     registerForm(req, res){
 
         res.render("session/register.njk")
-    },
-    async loginForm(req, res) {
-        
-        res.render("session/login.njk")
+    }, 
+    async login(req, res){
+
+        req.session.userId = req.user.id
+
+        return res.redirect('/admin/profile')
     },
     async post(req, res){
        
@@ -16,6 +18,21 @@ module.exports = {
 
         req.session.userId = userId
     
-        return res.redirect('/admin/profile')
+        return res.redirect('/admin/users/login')
+        },
+        async loginForm(req, res) {
+            
+            res.render("session/login.njk")
+        },
+        async list(req, res){
+
+            let users = await User.findAll()
+
+            console.log(users)
+            return res.render('session/list.njk')
+        },
+        forgotpasswordForm(req, res){
+
+            return res.render('session/forgot-password.njk')
         }
 }

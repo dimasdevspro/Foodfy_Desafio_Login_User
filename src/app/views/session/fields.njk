@@ -20,7 +20,7 @@
             onblur="Validate.apply(this, 'isEmail')">
         </div>
     </div>
-    <div class="field user">
+       
         <div class="field user input">
             <p>Senha</p>
             <input 
@@ -28,19 +28,13 @@
             name="password" 
             id="passr" 
             value="{{user.password}}" 
-            placeholder="Escolha uma senha segura">
+            {% if user.id %}
+            placeholder="Senha atual"
+            {% else %}
+            placeholder="Repita a senha segura"
+            {% endif %}>
         </div>
-        {% if user.id %}
-        <div class="field user input">
-            <p>Senha</p>
-            <input 
-            type="password" 
-            name="password" 
-            id="passr" 
-            value="{{user.password}}" 
-            placeholder="Senha atual">
-        </div>
-        {% endif %}
+   
         {% if not user.id %}
             <div class="field user input">
                 <p>Repita a Senha</p>
@@ -49,7 +43,7 @@
                 name="passwordRepeat" 
                 id="pass" 
               
-                placeholder="Repita a senha segura">
+                >
             </div>
         {% endif %}
     </div>
@@ -59,6 +53,7 @@
     type="checkbox" 
     name="is_admin" 
     id="is_admin" 
+    value="{{user.is_admin}}"
     >
     <p>Administrador?</p>
 </div>

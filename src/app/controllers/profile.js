@@ -1,14 +1,15 @@
 const User = require('../models/User')
 
 module.exports = {
-    async post(req, res){
-
-        req.session.userId = req.user.id
     
-        return res.redirect('/admin/profile')
-    },
+        logout(req, res){
+            req.session.destroy()
+
+            return res.redirect('/')
+        },
+   
     async index(req, res){
-        
+       
         res.render('session/index.njk')
     }
 }
