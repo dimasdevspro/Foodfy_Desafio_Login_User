@@ -17,8 +17,8 @@ routes.get('/users/forgot-password', UserController.forgotpasswordForm)
 
 // Rotas de perfil de um usuário logado
 
-routes.get('/profile', ProfileController.index) // Mostrar o formulário com dados do usuário logado
-// routes.put('/profile', ProfileController.put)// Editar o usuário logado
+routes.get('/profile', ValidateController.show, ProfileController.show) // Mostrar o formulário com dados do usuário logado
+routes.put('/profile', ProfileController.put)// Editar o usuário logado
 
 // Rotas que o administrador irá acessar para gerenciar usuários
 routes.get('/users/register', UserController.registerForm) // Mostrar formulário dos usuários

@@ -5,10 +5,10 @@
         <form style="position: absolute; width: 940px; " id="form-del" method="post" action="/admin/user/delete?_method=DELETE">
             <input type="hidden" name="id" value="{{user.id}}">
             <div class="admin-user" style="margin-left: 800px;">
-                <button id="del" type="submit">Deletar</button>
+                 {% if not user.is_admin == "true"%} <button id="del2" type="submit">Deletar</button> {% endif %}
             </div>
         </form>
-        <form class="form-newadmin" method="post" action="/admin/user/edit">
+        <form class="form-user" method="post" action="/admin/profile">
             <div class="adm-user">
                 <div style="float:left">
                     <label>Editar</label>

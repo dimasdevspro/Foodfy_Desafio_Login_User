@@ -493,7 +493,8 @@ form {
 }
 
 .form-newchef,
-.form-newadmin{
+.form-newadmin,
+.form-user{
   height: 430px;
 }
 
@@ -528,6 +529,7 @@ form {
   cursor: pointer;
   text-align: center;
 }
+
 .field label {
   display: block;
   font-size: 24px;
@@ -906,6 +908,19 @@ form .field-upload-chef #photos-preview .photo img {
   cursor: pointer;
   text-decoration: none;
   position: relative;
+}
+
+#del2 {
+  width: 139px;
+  background: #dc4747;
+  border-radius: 4px;
+  padding: 9px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
 }
 
 .adm-user {

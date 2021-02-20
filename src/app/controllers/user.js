@@ -35,4 +35,5 @@ module.exports = {
 
             return res.render('session/forgot-password.njk')
         }
+
 }
