@@ -6,12 +6,12 @@ module.exports = {
         logout(req, res){
             req.session.destroy()
 
-            return res.redirect('/')
+            return res.redirect('/admin/users/login')
         },
         async show(req, res) {
             try {
                 const { user } = req
-               
+              console.log(req.session)
                 return res.render('session/index', {user})
             }catch(err){
                 console.error(err)
@@ -19,11 +19,11 @@ module.exports = {
 
         },
         async put(req, res) {
-                try {
-                    const { user } = req
-                    let { name, email, is_admin}= req.body
+            try {
+                
+                    let { name, email, is_admin} = req.body
                     
-                    await User.update(user.id, {
+                    await User.update(req.body.id, {
                         name,
                         email,
                         is_admin
@@ -34,7 +34,7 @@ module.exports = {
                         success: "Conta atualizada com sucesso!"
                     })
                 }   catch(err){
-                    console.error(err)
+                   
                     return res.render("session/index", {
                         error: "Algum erro aconteceu!"
                     })

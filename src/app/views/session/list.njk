@@ -16,15 +16,21 @@
       </form>
     </div>
   </div>
-  <div class="container_cards_chefs">
-    {% for chef in chefs %}
-      <div class="cards_chefs">
-        <div class="chef">
-          <img src="{{chef.path}}" alt="{{chef.filename}}">
-          <div class="chef_info">
-            <p>{{chef.name}}</p>
-            <a href="/chefs/{{chef.chef_id}}" class="link-view">Visualizar</a>
-          </div>
+  <div class="container_cards_users">
+    {% for users in user %}
+      <div class="cards_users">
+        <div class="users">
+            <p>{{user.name}}</p>
+             <p>{{user.email}}</p>
+         <form class="form-user" method="post" action="/admin/profile?_method=PUT">
+        <button class="" type="submit">Editar</button>      
+        <input type="hidden" name="id" value="{{user.id}}">
+        </form>
+        <form class="form-user" method="post" action="/admin/profile?_method=DELETE">
+        <button class="" type="submit">Deletar</button>      
+        <input type="hidden" name="id" value="{{user.id}}">
+        </form>
+    </div>
         </div>
       </div>
     {% endfor %}

@@ -1,0 +1,521 @@
+
+/*=============ADMIN=============*/
+
+.comum_div {
+    width: 960px;
+    margin: 55px 0px 0px 230px;
+  }
+  
+  #button-create,
+  #button-filter,
+  .button-register,
+  .button-acess,
+  .button-forgot {
+    text-decoration: none;
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    line-height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: #6558c3;
+    cursor: pointer;
+  }
+  
+  form {
+    width: 940px;
+    overflow: hidden;
+  }
+  
+  .form-newchef,
+  .form-newadmin,
+  .form-user{
+    height: 430px;
+  }
+  
+  .form-login,
+  .form-forgot {
+    height: 486px;
+  }
+  
+  #sav,
+  #edt {
+    background: #6558c3;
+    border-radius: 4px;
+    padding: 9px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: right;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  #del {
+    width: 92px;
+    background: #dc4747;
+    border-radius: 4px;
+    padding: 9px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .field label {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #111111;
+    margin: 30px 0px 10px;
+  }
+  
+  .field input,
+  .ingredients input {
+    width: 938px;
+    height: 49px;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #111111;
+    outline: none;
+  }
+  
+  .field input::placeholder {
+    font-size: 16px;
+    color: #111111;
+  }
+  
+  .field textarea {
+    width: 938px;
+    height: clamp(157px, 257px, 357px);
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    resize: vertical;
+    background: #ffffff;
+    font-size: 16px;
+    line-height: 28px;
+    color: #111111;
+    outline: none;
+    margin-bottom: 30px;
+  }
+  
+  .add-ingredient,
+  .add-preparation,
+  .link-view,
+  .card_chef .chef_info a {
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #6558c3;
+    text-align: right;
+    text-decoration: none;
+    background-color: white;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  #admin-recipe-title,
+  #admin-chef-title {
+    width: 298px;
+    height: 70px;
+    position: relative;
+    margin: 30px 972px 30px 230px;
+    font-weight: bold;
+    font-size: 24px;
+    color: #111111;
+    line-height: 28px;
+  }
+  
+  .adm-recipe,
+  .adm-chef {
+    width: 940px;
+    height: 37px;
+    margin-bottom: 24px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #111111;
+  }
+  .adm-recipe label {
+    display: -webkit-inline-box;
+    -webkit-box-align: baseline;
+    font-size: 24px;
+    font-weight: bold;
+    color: #111111;
+  }
+  .card_chefs {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 320px);
+  }
+  .card_chef {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 320px);
+  }
+  
+  .img_chef_id {
+    text-align: center;
+  }
+  
+  .img_chef_id img {
+    width: 200px;
+    height: 200px;
+    margin: 51px 0px 30px 0px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .edt {
+    text-align: end;
+  }
+  
+  select {
+    width: 350px;
+    outline: none;
+    color: #111111;
+    font-size: 20px;
+    line-height: 21px;
+  }
+  
+  /* FILTER */
+  
+  .header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  
+  }
+  
+  .header form {
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    justify-items: end;
+  }
+  
+  .header form input {
+    border: 1px solid #eee;
+    padding: 4px 8px;
+    outline: none;
+    box-sizing: border-box;
+    width: 50%;
+    height: 40px;
+    margin: 10px;
+  }
+  
+  .pagination {
+    text-align: center;
+  }
+  
+  .pagination a {
+    text-decoration: none;
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    color: #111111;
+  }
+  
+  /* UPLOAD FOTOS */
+  
+  form .field.upload {
+    position: relative;
+    display: flex;
+    height: 180px;
+  }
+  
+  form .field.upload .upload {
+    display: block;
+  }
+  
+  form .field.upload .upload label {
+    margin: 0px 0px 10.5px;
+  }
+  
+  form .field.upload .upload #photos-upload {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    width: 149px;
+    height: 149px;
+    border: 1px solid #dddddd;
+    border-radius: 3.5px;
+    background-color: #ffffff;
+  }
+  
+  form .field.upload .upload #photos-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+  
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  form .field.upload #photos-preview {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10.5px;
+    width: 100%;
+    height: 150px;
+    box-sizing: border-box;
+    margin: 31px 0px 0px 10.5px;
+  }
+  
+  form .field.upload #photos-preview .photo {
+    box-sizing: border-box;
+  }
+  
+  form .field.upload #photos-preview .photo img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  #photos-upload .photo {
+    position: relative;
+  }
+  
+  #photos-upload .photo i {
+    position: absolute;
+    top: 0;
+    left: 0;
+  
+    background: rgba(255, 255, 255, 0.8);
+    color: #999999;
+    font-size: 500%;
+    font-weight: bold;
+  
+    width: 100%;
+    height: 100%;
+  
+    display: flex;
+    justify-content: center;
+  }
+  
+  #photos-preview .photo {
+    position: relative;
+  }
+  
+  #photos-preview .photo i {
+    position: absolute;
+    top: 0;
+    left: 0;
+  
+    background: rgba(255, 255, 255, 0.8);
+  
+    color: red;
+  
+    width: 100%;
+    height: 100%;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    font-size: 500%;
+    cursor: pointer;
+  
+    transition: opacity 200ms;
+  
+    opacity: 0;
+  }
+  
+  #photos-preview .photo:hover i {
+    opacity: 1;
+  }
+  
+  form .field-upload-chef {
+    position: absolute;
+    display: block;
+    overflow: hidden;
+    width: 200px;
+  }
+  
+  
+  form .field-upload-chef #field-upload-chef-button{
+    padding: 8px 16px;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px -6px #333;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    width: 100px;
+    position: relative;
+    margin-top: 30px;
+    background: #6558c3;
+    text-align: center;
+  }
+  
+  form .field-upload-chef #field-upload-chef-input {
+    position: relative;
+      top: -29px;
+      left: 0;
+      cursor: pointer;
+      display: block;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+  }
+  
+  form .field-upload-chef #photos-preview .photo img {
+    width: 100%;
+    height: 150px;
+  
+    object-fit: cover;
+  }
+  
+  .field.user {
+    display: flex;
+  }
+  
+  .field.user.input {
+    display: block;
+  }
+  
+  .field.user div:first-child {
+    margin-right: 60px;
+  }
+  
+  .field.user.radio {
+    display: flex;
+    align-items: baseline;
+  }
+  
+  .field.user.radio p {
+    margin-left: 8px;
+  }
+  
+  .field.user.radio input[type=checkbox]{
+    width: 15px;
+    height: 15px;
+  }
+  
+  .field.user p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #111111;
+    margin: 30px 0px 10px;
+  }
+  
+  .field.user input {
+    width: 438px;
+    height: 49px;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #111111;
+    outline: none;
+  }
+  
+  #cancel {
+    width: 139px;
+    background:  #8A8A8A;
+    border-radius: 4px;
+    padding: 9px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  #sav2 {
+    width: 139px;
+    background: #6558c3;
+    border-radius: 4px;
+    padding: 9px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+  }
+  
+  #del2 {
+    width: 139px;
+    background: #dc4747;
+    border-radius: 4px;
+    padding: 9px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .adm-user {
+    width: 750px;
+    height: 37px;
+    margin-bottom: 24px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #111111;
+  }
+  
+  .form-login,
+  .form-forgot {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+  } 
+  
+  .field.user-login,
+  .field.forgot-password {
+    display: block;
+  }
+  
+  .login-user,
+  .forgot-password {
+    width: 450px;
+    height: 37px;
+    margin-bottom: 24px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #111111;
+    text-align: center;
+  }
+  
+  
+  .field_acess_forgot-password {
+    position: relative;
+    width: 450px;
+    margin-bottom: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  
+  .field_acess_forgot-password a{
+    list-style: none;
+    text-decoration: none;
+    margin-bottom: 33px;
+    color: black;
+  }
+  
+  .field_acess_forgot-password a:hover {
+    font-weight: bold;
+  }
+  
+  

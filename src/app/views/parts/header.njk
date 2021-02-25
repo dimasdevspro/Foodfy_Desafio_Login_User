@@ -3,7 +3,31 @@
           <a href="/">HOME</a>
           <a href="/recipes">RECEITAS</a>
           <a href="/chefs">CHEFS</a>
-          <a href="/admin/users/login">USUÁRIOS</a>
-          <a href="/about">SOBRE</a>
+         <nav class="primary">
+            <ul>
+                <li>
+                    <li class="accounts">
+                    <a href="/admin/users/login">
+                    USUÁRIOS
+                    </a>
+                    {% if user %}
+                    <ul class="submenu">
+                        <li>
+                            <a href="/admin/profile">Minha conta</a>
+                        </li>
+                        <li>
+                            <a href="/admin/users/list">Usuários</a>
+                        </li>
+                        <li>
+                            <form action="/admin/logout" method="post">
+                            <button>Sair</button>
+                            </form>
+                        </li>
+                    </ul>
+
+                </li>{% endif %}
+            </ul>
+
+        </nav>
         </header>
       </div>

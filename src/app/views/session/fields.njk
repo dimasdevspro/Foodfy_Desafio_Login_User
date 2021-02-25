@@ -42,6 +42,7 @@
             </div>
         {% endif %}
          <div class="field user radio">
+    {% if user.is_admin == 'true'%}
     <input 
     type="checkbox" 
     name="is_admin" 
@@ -51,6 +52,7 @@
     {% endif %}
     >
     <p>Administrador?</p>
+    {% endif%}
 </div>
 </div>
 

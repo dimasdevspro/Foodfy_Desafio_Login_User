@@ -46,7 +46,7 @@ async create(data) {
         
         if (data.is_admin === 'on') {
             data.is_admin = 'true'
-        } else if (data.is_admin === 'undefined'){
+        } else {
             data.is_admin = 'false'
         }
 
@@ -105,8 +105,7 @@ async update(id, fields) {
         }
     })
 
-    await db.query(query)
-    return
+return db.query(query)
 }, 
 async delete(id) {
     const userId = req.body;

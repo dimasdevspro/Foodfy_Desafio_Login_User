@@ -2,13 +2,13 @@
 
 {% block content %}
     <div class="comum_div">
-        <form style="position: absolute; width: 940px; " id="form-cancel" method="post" action="/admin/user/delete?_method=DELETE">
+        <form style="position: absolute; width: 940px; " id="form-cancel" method="post" action="admin/users/delete?_method=DELETE">
             <input type="hidden" name="id" value="{{user.id}}">
             <div class="admin-user" style="margin-left: 800px;">
                 <button id="cancel" type="submit">Cancelar</button>
             </div>
         </form>
-        <form class="form-newadmin" method="post" action="/admin/user/create">
+        <form class="form-newadmin" method="post" action="/admin/users/create">
             <div class="adm-user">
                 <div style="float:left">
                     <label >Criar Usuário</label>

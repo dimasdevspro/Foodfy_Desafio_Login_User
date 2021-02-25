@@ -18,20 +18,20 @@ module.exports = {
 
         req.session.userId = userId
     
-        return res.redirect('/admin/users/login')
+        return res.redirect('/users/list')
         },
-        async loginForm(req, res) {
+    async loginForm(req, res) {
             
             res.render("session/login.njk")
         },
-        async list(req, res){
+    async list(req, res){
 
             let users = await User.findAll()
 
             console.log(users)
             return res.render('session/list.njk')
         },
-        forgotpasswordForm(req, res){
+    forgotpasswordForm(req, res){
 
             return res.render('session/forgot-password.njk')
         }
