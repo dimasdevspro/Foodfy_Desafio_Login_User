@@ -1,5 +1,5 @@
 function onlyAdmin(req, res, next){
-console.log(req.session)
+    
     if(!req.session.is_admin == true){
     
     return res.redirect('/admin/profile')    

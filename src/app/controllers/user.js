@@ -26,10 +26,9 @@ module.exports = {
         },
     async list(req, res){
 
-            let users = await User.findAll()
+             const users = await User.findAll()
 
-            console.log(users)
-            return res.render('session/list.njk')
+             return res.render('session/list.njk', {users})
         },
     forgotpasswordForm(req, res){
 

@@ -68,21 +68,12 @@ async create(data) {
 async findAll(filters){
     try{
          
-    let query = "SELECT users.* FROM users"
+    let query = "SELECT * FROM users"
     
-    Object.keys(filters).map(key => {
-        query = `${query}
-        ${key}
-        `
-
-        Object.keys(filters[key]).map(field => {
-            query = `${query} ${field} = '${filters[key][field]}'`
-        })
-    })
-  
     let results = await db.query(query)
    
     return results.rows  
+    
     }catch(err){
         console.error(err)
     }

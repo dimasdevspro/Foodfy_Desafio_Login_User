@@ -2,44 +2,33 @@
 
 {% block content %}
 
-  <div id="admin-chef-title">
-    <p>Usuários</p>
-    <div class="header">
+  <div id="admin-users">
+    
+    <div class="header user">
+      <p>Usuários</p>
       <a id="button-create" href="/admin/users/register">Novo</a>
-      <form action="/chefs" method="GET">
-        <input 
-        type="text" 
-        name="filter" 
-        placeholder="Filtrar por Nome"
-        value="{{filter}}">
-        <button id="button-filter" type="submit">Filtrar</button>
-      </form>
     </div>
-  </div>
-  <div class="container_cards_users">
-    {% for users in user %}
-      <div class="cards_users">
+    <div class="container_cards_users">
+      {% for user in users %}
+  
         <div class="users">
-            <p>{{user.name}}</p>
-             <p>{{user.email}}</p>
-         <form class="form-user" method="post" action="/admin/profile?_method=PUT">
-        <button class="" type="submit">Editar</button>      
-        <input type="hidden" name="id" value="{{user.id}}">
-        </form>
-        <form class="form-user" method="post" action="/admin/profile?_method=DELETE">
-        <button class="" type="submit">Deletar</button>      
-        <input type="hidden" name="id" value="{{user.id}}">
-        </form>
-    </div>
+             <p id="user-name">{{user.name}}</p>
+             <p id="user-email">{{user.email}}</p>
+          <form method="post" action="/admin/profile?_method=PUT">
+          <button class="" type="submit">Editar</button>      
+          <input type="hidden" name="id" value="{{user.id}}">
+          </form>
+          <form method="post" action="/admin/profile?_method=DELETE">
+          <button class="" type="submit">Deletar</button>      
+          <input type="hidden" name="id" value="{{user.id}}">
+          </form>
         </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
+   
   </div>
-  <div 
-  class="pagination" 
-  data-page={{pagination.page}} 
-  data-total={{pagination.total}}
-  data-filter={{filter}}
-  ></div>
+
+
+  </div>
 
 {% endblock %}
