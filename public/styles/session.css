@@ -126,9 +126,9 @@
   }
   
   #admin-recipe-title,
-  #admin-chef-title {
+  #admin-chef-title{
     width: 298px;
-    height: 70px;
+    height: 425px;
     position: relative;
     margin: 30px 972px 30px 230px;
     font-weight: bold;
@@ -518,4 +518,51 @@
     font-weight: bold;
   }
   
+  /* LIST OF USERS */
+
+  #admin-users {
+    position: relative; 
+    margin-left: 230px;
+  }
+
+.header.user{
+  width: 840px;
+  display: flex;
+}
+.header p {
+  font-weight: bold;
+    font-size: 24px;
+    color: #111111;
+    line-height: 28px;
+}
+
+.header.user #button-create {
+margin-left: 610px;
+}
+
+  .container_cards_users {
+      position: relative;
+      margin-bottom: 155px;
+      gap: 61px;
+      display: grid;
+      grid-template-columns: repeat(3, 300px);
+  }
   
+
+  .users #user-name {
+   font-style: bold;
+   font-size: 18px;
+   color: #111111;
+   
+  }
+
+  .users #user-email {
+    font-style: bold;
+    font-size: 14px;
+    color: #777777;
+   }
+
+  .users #user-name, .users #user-email {
+  font-family: Arial, Helvetica, sans-serif;    
+  line-height: 22px;
+  }
