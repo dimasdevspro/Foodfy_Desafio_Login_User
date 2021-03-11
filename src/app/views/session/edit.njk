@@ -1,0 +1,32 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+    <div class="comum_div">
+        <form style="position: absolute; width: 940px; " id="form-del" method="post" action="/admin/profile?_method=DELETE">
+            <input type="hidden" name="id" value="{{user.id}}">
+            <div class="admin-user" style="margin-left: 640px;">
+                 {% if user.is_admin == false %} <button id="del2" type="submit">Deletar</button> {% endif %}
+            </div>
+        </form>
+        <form class="form-user" method="post" action="/admin/profile?_method=PUT">
+         <button style="float:right" id="sav2" type="submit">Salvar</button>
+            <div class="adm-user">
+                <div style="float:left">
+                    <label>Editar</label>
+                </div>
+                
+            </div>
+            {% include "session/fields.njk" %}
+            <input type="hidden" name="id" value="{{user.id}}">
+        </form>
+    </div>
+    <script>
+        const formDelete = document.querySelector("#form-del");
+        formDelete.addEventListener("submit", function (event) {
+            const confirmation = confirm("Deseja Deletar?")
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        })
+    </script>
+{% endblock %}

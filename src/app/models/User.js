@@ -22,7 +22,7 @@ async findOne(filters){
         })
       
         let results = await db.query(query)
-       
+        
         return results.rows[0]  
         }catch(err){
             console.error(err)

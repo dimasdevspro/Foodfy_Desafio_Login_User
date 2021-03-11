@@ -9,19 +9,20 @@
       <a id="button-create" href="/admin/users/register">Novo</a>
     </div>
     <div class="container_cards_users">
-      {% for user in users %}
+      {% for userComun in usersComuns %}
   
         <div class="users">
-             <p id="user-name">{{user.name}}</p>
-             <p id="user-email">{{user.email}}</p>
-          <form method="post" action="/admin/profile?_method=PUT">
-          <button class="" type="submit">Editar</button>      
-          <input type="hidden" name="id" value="{{user.id}}">
+             <p id="user-name">{{userComun.name}}</p>
+             <p id="user-email">{{userComun.email}}</p>
+          <form class="link-user">
+            <a id="button-user-edit" href="/admin/profile/{{userComun.id}}/edit">Editar</a>
+          {# <button type="submit" id="button-user-edit" method="post" action="/admin/profile/{{userComun.id}}/edit">Editar</button> #}
           </form>
-          <form method="post" action="/admin/profile?_method=DELETE">
-          <button class="" type="submit">Deletar</button>      
-          <input type="hidden" name="id" value="{{user.id}}">
-          </form>
+          {% if userComun.is_admin == false %} 
+          <div class="link-user">
+          <button id="button-user-delete" type="submit" method="post" action="/admin/users/delete?_method=DELETE">Deletar</a>      
+          </div>
+          {% endif %}
         </div>
       {% endfor %}
     </div>

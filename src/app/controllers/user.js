@@ -1,6 +1,7 @@
 const session = require('../validators/session')
 const User = require('../models/User')
 
+
 module.exports = {
     registerForm(req, res){
 
@@ -11,6 +12,14 @@ module.exports = {
         req.session.userId = req.user.id
 
         return res.redirect('/admin/profile')
+    },
+    async editUser(req, res){
+        
+        const id = req.params.id
+        
+        let user = await User.findOne({where: {id}})
+        
+        return res.render('session/edit.njk', {user})
     },
     async post(req, res){
        
@@ -26,9 +35,9 @@ module.exports = {
         },
     async list(req, res){
 
-             const users = await User.findAll()
-
-             return res.render('session/list.njk', {users})
+             const usersComuns = await User.findAll()
+            
+             return res.render('session/list.njk', {usersComuns})
         },
     forgotpasswordForm(req, res){
 
