@@ -14,7 +14,7 @@ module.exports = {
         const { user } = req
         
         req.session.is_admin = user.is_admin
-                
+            
           return res.render('session/index', {user})
                
             }catch(err){

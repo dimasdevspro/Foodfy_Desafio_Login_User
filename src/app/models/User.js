@@ -99,20 +99,14 @@ async update(id, fields) {
 return db.query(query)
 }, 
 async delete(id) {
-    const userId = req.body;
-
-    await RecipeFile.delete(recipeId.files_id);
-    await File.delete(recipeId.files_id);
-    await Recipe.delete(recipeId.recipe_id);
-
-    //pegar todos os produtos
+    //pegar todos as receitas
     let results = await db.query("SELECT * FROM recipes WHERE user_id = $1", [id])
     const recipes = results.rows
 
 
-    // depois produtos, pegar todas as imagens
-    const allFilesPromise = products.map(product => 
-        Recipes.files(recipe.id))
+    // depois receitas, pegar todas as imagens
+    const allFilesPromise = recipes.map(recipe => 
+        Recipe.files(recipe.id))
 
         let promiseResults = await Promise.all(allFilesPromise)
 

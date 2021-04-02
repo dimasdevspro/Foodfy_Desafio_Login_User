@@ -27,7 +27,7 @@ module.exports = {
 
         req.session.userId = userId
     
-        return res.redirect('/users/list')
+        return res.redirect('/admin/users/list')
         },
     async loginForm(req, res) {
             
@@ -42,6 +42,54 @@ module.exports = {
     forgotpasswordForm(req, res){
 
             return res.render('session/forgot-password.njk')
+        },
+    async put(req, res) {
+        try {
+            
+                let { name, email, is_admin} = req.body
+               
+                if (is_admin == undefined){
+                    is_admin = false
+                }else {
+                    is_admin = true
+                }
+
+                await User.update(req.body.id, {
+                    name,
+                    email,
+                    is_admin
+                })
+    
+                return res.render("session/index", {
+                    user: req.body,
+                    is_admin: req.session.is_admin,
+                    success: "Conta atualizada com sucesso!"
+                })
+            }   catch(err){
+               
+                return res.render("session/index", {
+                    error: "Algum erro aconteceu!"
+                })
+            }    
+    },
+    async delete(id){
+
+        try{
+           
+            await User.delete(req.body.id)
+            
+            return res.render("session/list", {
+                
+                success: "Conta deletada com sucesso!"
+            })
+
+        }catch(err){
+            console.error(err)
+            return res.render("session/list", {
+                user: req.body,
+                error: "Erro ao tentar deletar sua conta!"
+            })
         }
+    }
 
 }

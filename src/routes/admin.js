@@ -25,7 +25,7 @@ routes.post('/logout', ProfileController.logout) //Logout usuário
 routes.get('/users/register', onlyAdmin, UserController.registerForm) // Mostrar formulário dos usuários
 routes.post('/users/create', onlyAdmin, ValidateController.create, UserController.post) //Cadastrar um usuário
 routes.get('/users/list', onlyAdmin, UserController.list) //Mostrar a lista de usuários cadastrados
-// routes.put('/users/edit', UserController.put) // Editar um usuário
-// routes.delete('/users/delete', UserController.delete) // Deletar um usuário
+routes.put('/users/edit', onlyAdmin, UserController.put) // Editar um usuário
+routes.delete('/users/delete', onlyAdmin, UserController.delete) // Deletar um usuário
 
 module.exports = routes
