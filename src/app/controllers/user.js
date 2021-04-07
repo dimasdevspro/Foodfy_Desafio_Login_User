@@ -1,6 +1,6 @@
 const crypto = require('crypto')
 const User = require('../models/User')
-
+const mailer = require('../../lib/mailer')
 
 module.exports = {
     registerForm(req, res){
@@ -101,9 +101,8 @@ module.exports = {
             })
         }
     },
-    async sendEmail(){
+    async sendEmail(req, res){
         const user = req.user
-
         try {
 // um token para esse usuário
 const token = crypto.randomBytes(20).toString("hex")
@@ -116,7 +115,7 @@ now = now.setHours(now.getHours() + 1)
 
 await User.update(user.id, {
     reset_token: token,
-    reset_token_expires: now
+    reset_token_experies: now
 })
 
 
@@ -133,16 +132,51 @@ await mailer.sendMail({
     RECUPERAR SENHA</a>
     </p>`
 })
+
 // avisar o usuário que enviamos o email
-return res.render("session/forgot-password", {
+return res.render("session/login", {
     success: "Verifique seu email para resetar sua senha!"
 })
         }catch(err){
             console.error(err)
-            return res.render("session/forgot-password", {
+            return res.redirect("session/login", {
                 error: "Erro inesperado, tente novamente!"
             })
         }
+    },
+    resetPasswordForm(req, res){
+            return res.render('session/password-reset.njk', {token: req.query.token})
+    },
+    resetPassword(req, res){
+        const {email, password, passwordRepeat, token} = req.body
+
+        try{
+            //procurar o usuário que
+            
+
+            //ver se a senha birthDate
+
+
+            //verificar se o token expirou
+
+
+            //verificar se o token no expirou
+
+
+            //cria um novo hash de senhas
+
+            //atualiza o usuário que
+
+
+            //avisa o usuário que ele tem uma nova senha
+
+        }catch(err){
+            console.error(err)
+            return res.redirect("session/password-reset", {
+                error: "Erro inesperado, tente novamente!"
+            })
+        }
+
     }
 
 }

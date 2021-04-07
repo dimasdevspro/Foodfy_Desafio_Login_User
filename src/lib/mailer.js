@@ -8,5 +8,3 @@ module.exports = nodemailer.createTransport({
     pass: "8d90923d6cfe30"
   }
 });
-
-  
