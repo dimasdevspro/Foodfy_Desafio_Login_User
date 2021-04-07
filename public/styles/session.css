@@ -128,7 +128,6 @@
   #admin-recipe-title,
   #admin-chef-title{
     width: 298px;
-    height: 425px;
     position: relative;
     margin: 30px 972px 30px 230px;
     font-weight: bold;
@@ -272,7 +271,7 @@
     width: 100%;
     height: 150px;
     box-sizing: border-box;
-    margin: 31px 0px 0px 10.5px;
+    margin: 66px 0px 0px 10.5px;
   }
   
   form .field.upload #photos-preview .photo {
@@ -284,6 +283,10 @@
     height: 150px;
     object-fit: cover;
   }
+
+  .field {
+    margin: auto;
+  }
   
   #photos-upload .photo {
     position: relative;
@@ -291,7 +294,7 @@
   
   #photos-upload .photo i {
     position: absolute;
-    top: 0;
+    top: 34px;
     left: 0;
   
     background: rgba(255, 255, 255, 0.8);
