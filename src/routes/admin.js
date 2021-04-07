@@ -1,7 +1,6 @@
 const express = require('express')
 const routes = express.Router()
 
-const SessionController = require('../app/controllers/session')
 const ProfileController = require('../app/controllers/profile')
 const UserController = require('../app/controllers/user')
 const ValidateController = require('../app/validators/session')
@@ -12,7 +11,7 @@ const { onlyAdmin } = require('../app/middlewares/session')
 routes.get('/users/login', UserController.loginForm)//Mostrar o formulário login
 routes.post('/users', ValidateController.login, UserController.login)//Envio dos dados de Login
 routes.get('/users/forgot-password', UserController.forgotpasswordForm)//Formulário de resgate de senha
-// routes.post('/users', ValidateController.email, UserController.sendEmail)
+routes.post('/users', ValidateController.email, UserController.sendEmail)
 
 // Rotas de perfil de um usuário logado
 

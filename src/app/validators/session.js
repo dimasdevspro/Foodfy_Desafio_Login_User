@@ -61,8 +61,25 @@ req.user = user
 
 next()
 }
+
+async function email (req, res, next){
+
+    const { email } = req.body
+
+    const user = await User.findOne({where: {email}})
+
+    if (!user) return res.render("session/login", {
+        user: req.body,
+        error: "Usuário não cadastrado!"
+    })
+
+    req.user = user
+   
+    next()
+}
 module.exports = {
     create,
     login,
     show,
+    email
 }
