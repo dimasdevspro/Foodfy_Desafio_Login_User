@@ -5,7 +5,7 @@ const SessionController = require('../app/controllers/session')
 const ProfileController = require('../app/controllers/profile')
 const UserController = require('../app/controllers/user')
 const ValidateController = require('../app/validators/session')
-const { isLoggedRedirectToUsers, onlyUsers, onlyAdmin, isLoggedRedirectToAdmin } = require('../app/middlewares/session')
+const { onlyAdmin } = require('../app/middlewares/session')
 
 // Rotas para Login de usuários em geral e admin
 

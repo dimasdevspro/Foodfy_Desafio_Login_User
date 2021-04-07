@@ -4,6 +4,7 @@ const chefsController = require('../app/controllers/chefs')
 const multer = require('../app/middlewares/multer')
 const { onlyAdmin } = require('../app/middlewares/session')
 
+
 //ADMIN CHEFS
  
 routes.get("/", chefsController.index); // Mostrar a lista de chef

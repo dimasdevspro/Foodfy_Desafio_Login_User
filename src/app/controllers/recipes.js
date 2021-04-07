@@ -1,5 +1,4 @@
 const Recipe = require("../models/Recipe");
-const Chef = require("../models/Chef");
 const File = require("../models/File");
 const RecipeFile = require("../models/RecipeFile");
 
@@ -37,7 +36,9 @@ module.exports = {
     return res.render("about");
   },
   async index(req, res) {
-   
+    
+    const userAdmin = req.session
+
     let { filter, page, limit } = req.query
 
     page = page || 1
@@ -60,7 +61,7 @@ module.exports = {
             recipes[i].path = `${req.protocol}://${req.headers.host}${recipes[i].path.replace("public", "")}`,
             recipes[i].author = recipes[i].name
           }
-          return res.render("admin/recipes/index", {recipes, pagination, filter})
+          return res.render("admin/recipes/index", {recipes, pagination, filter, userAdmin})
       }  
 
       }
@@ -69,16 +70,20 @@ module.exports = {
     
   },
   create(req, res) {
+
+    const userAdmin = req.session
+
     Recipe.chefsSelectOptions()
       .then(function (results) {
         const chefOptions = results.rows;
-        return res.render("admin/recipes/create", { chefOptions });
+        return res.render("admin/recipes/create", { chefOptions, userAdmin });
       })
       .catch(function (err) {
         throw new Error(err);
       });
   },
   async post(req, res) {
+
     //validando se todos os campos estão preenchidos
     const keys = Object.keys(req.body);
 
@@ -119,6 +124,9 @@ module.exports = {
     
   },
   async show(req, res) {
+
+    const userAdmin = req.session
+
     //buscando as informações de receitas e chefs
     let results = await Recipe.find(req.params.id);
     const recipe = results.rows[0];
@@ -139,14 +147,17 @@ module.exports = {
         )}`,
       }));
 
-      return res.render("admin/recipes/show", { recipe, dataFile });
+      return res.render("admin/recipes/show", { recipe, dataFile, userAdmin });
     } else {
       const dataFile = {};
 
-      return res.render("admin/recipes/show", { recipe, dataFile });
+      return res.render("admin/recipes/show", { recipe, dataFile, userAdmin });
     }
   },
   async edit(req, res) {
+
+    const userAdmin = req.session
+
     //buscando as informações concatenadas de receitas e chefs
     let results = await Recipe.find(req.params.id);
     const recipe = results.rows[0];
@@ -176,6 +187,7 @@ module.exports = {
         recipe,
         dataFile,
         chefOptions,
+        userAdmin
       });
     } else {
       const dataFile = {};
@@ -184,6 +196,7 @@ module.exports = {
         recipe,
         dataFile,
         chefOptions,
+        userAdmin
       });
     }
   },

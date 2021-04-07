@@ -3,9 +3,13 @@
 {% block content %}
 
   <div id="admin-recipe-title">
+    {% if userAdmin.is_admin%}
     <p>Gerenciar Receitas</p>
+    {% endif %}
   <div class="header">
+    {% if userAdmin.is_admin %}
     <a id="button-create" href="/recipes/create">Cadastrar</a>
+     {% endif %}
       <form action="/recipes/search" method="GET">
         <input 
         type="text" 

@@ -2,6 +2,8 @@ const Chef = require("../models/Chef");
 const File = require('../models/File')
 module.exports = {
   async index(req, res) {
+
+    const userAdmin = req.session
     // desconstruindo a query
     let { filter, page, limit } = req.query
     // definindo as propriedades da página
@@ -25,7 +27,7 @@ module.exports = {
             chefs[i].path = `${req.protocol}://${req.headers.host}${chefs[i].path.replace("public", "")}`
           }
        
-        return res.render("admin/chefs/index", { chefs, pagination, filter})
+        return res.render("admin/chefs/index", { chefs, pagination, filter, userAdmin})
         }  
       }
     await Chef.paginate(params)
@@ -69,6 +71,9 @@ module.exports = {
 
 },
   async show(req, res) {
+
+      const userAdmin = req.session
+
      //buscando as informações de chefs
      let results = await Chef.find(req.params.id);
      const chef = results.rows[0];
@@ -92,14 +97,17 @@ module.exports = {
            ""
          )}`,
        }));
-       return res.render("admin/chefs/show", { chef, recipe, dataFile });
+       return res.render("admin/chefs/show", { chef, recipe, dataFile, userAdmin });
      } else {
        const dataFile = {};
  
-       return res.render("admin/recipes/show", { chef, recipe, dataFile });
+       return res.render("admin/recipes/show", { chef, recipe, dataFile, userAdmin });
      }
   },
   async edit(req, res) {
+
+    const userAdmin = req.session
+
    //buscando as informações chefs
    let results = await Chef.find(req.params.id);
    const chef = results.rows[0];
@@ -124,6 +132,7 @@ module.exports = {
      return res.render(`admin/chefs/edit`, {
        chef,
        dataFile,
+       userAdmin
      });
  
    } else {
@@ -132,6 +141,7 @@ module.exports = {
      return res.render(`admin/chefs/edit`, {
        chef,
        dataFile,
+       userAdmin
      });
    }
   

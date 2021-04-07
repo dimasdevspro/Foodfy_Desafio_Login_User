@@ -13,16 +13,26 @@ module.exports = {
 
         return res.redirect('/admin/profile')
     },
-    async editUser(req, res){
+    async list(req, res){
+
+             const user = req.session
         
+             const usersComuns = await User.findAll()
+             
+             return res.render('session/list.njk', {usersComuns, user})
+        },
+    async editUser(req, res){  
+       
         const id = req.params.id
         
         let user = await User.findOne({where: {id}})
         
-        return res.render('session/edit.njk', {user})
+        const userAdmin = req.session
+
+        return res.render('session/edit.njk', {user, userAdmin})
     },
     async post(req, res){
-       
+        
         const userId = await User.create(req.body)
 
         req.session.userId = userId
@@ -32,12 +42,6 @@ module.exports = {
     async loginForm(req, res) {
             
             res.render("session/login.njk")
-        },
-    async list(req, res){
-
-             const usersComuns = await User.findAll()
-            
-             return res.render('session/list.njk', {usersComuns})
         },
     forgotpasswordForm(req, res){
 
@@ -59,15 +63,21 @@ module.exports = {
                     email,
                     is_admin
                 })
-    
-                return res.render("session/index", {
-                    user: req.body,
-                    is_admin: req.session.is_admin,
+
+                const usersComuns = await User.findAll()
+                
+                const userAdmin = req.session
+
+                return res.render("session/list", {
+                    usersComuns,
+                    userAdmin,
                     success: "Conta atualizada com sucesso!"
                 })
             }   catch(err){
                
-                return res.render("session/index", {
+                return res.render("session/list", {
+                    usersComuns,
+                    userAdmin,
                     error: "Algum erro aconteceu!"
                 })
             }    

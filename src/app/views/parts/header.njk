@@ -1,33 +1,32 @@
 <div class="menu_links">
-        <header>
-          <a href="/">HOME</a>
-          <a href="/recipes">RECEITAS</a>
-          <a href="/chefs">CHEFS</a>
-         <nav class="primary">
+    <header>
+        <a href="/">HOME</a>
+        <a href="/recipes">RECEITAS</a>
+        <a href="/chefs">CHEFS</a>
+        <nav class="primary">
             <ul>
                 <li>
                     <li class="accounts">
-                    <a href="/admin/users/login">
-                    USUÁRIOS
-                    </a>
-                    {% if user %}
-                    <ul class="submenu">
-                        <li>
-                            <a href="/admin/profile">Minha conta</a>
-                        </li>
-                        <li>
-                            <a href="/admin/users/list">Usuários</a>
-                        </li>
-                        <li>
-                            <form action="/admin/logout" method="post">
-                            <button>Sair</button>
-                            </form>
-                        </li>
-                    </ul>
-
-                </li>{% endif %}
-            </ul>
-
-        </nav>
+                        <a href="/admin/users/login">
+                            USUÁRIOS
+                        </a>
+                        {% if user or userAdmin.is_admin %}
+                            <ul class="submenu">
+                                <li>
+                                    <a href="/admin/profile">Minha conta</a>
+                                </li>
+                                <li>
+                                    <a href="/admin/users/list">Usuários</a>
+                                </li>
+                                <li>
+                                    <form action="/admin/logout" method="post">
+                                        <button>Sair</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        {% endif %}
+                    </li>
+                </ul>
+            </nav>
         </header>
-      </div>
+    </div>

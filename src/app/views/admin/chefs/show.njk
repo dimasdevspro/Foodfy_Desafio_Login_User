@@ -10,9 +10,11 @@
         <img src="{{dataFile[0].src}}" alt=""/>
       </div>
       <div class="edt">
+        {% if userAdmin.is_admin%}
         <a id="edt" href="/chefs/{{chef.id}}/edit">
           Editar Chef
         </a>
+        {% endif %}
       </div>
       <div class="name_chef_id">
         <p>{{chef.name}}</p>

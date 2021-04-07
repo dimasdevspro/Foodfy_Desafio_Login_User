@@ -8,9 +8,11 @@
   <div style="float:left;">
       <label class="subtitles_recipe_id">Receita: {{recipe.title}}</label>
   </div>
+  {% if userAdmin.is_admin == true %}
   <div style="float:right;">
       <a href="/recipes/{{recipe.id}}/edit"><button id="edt" type="submit">Editar receita</button></a>
-  </div>  
+  </div>
+  {% endif %}  
     </div>
       <div class="highlight">
         {% if not dataFile[0].src %}
