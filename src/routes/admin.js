@@ -12,8 +12,8 @@ routes.get('/users/login', UserController.loginForm)//Mostrar o formulário logi
 routes.post('/users', ValidateController.login, UserController.login)//Envio dos dados de Login
 routes.get('/users/forgot-password', UserController.forgotpasswordForm)//Formulário de resgate de senha
 routes.post('/users/forgot-password', ValidateController.email, UserController.sendEmail)//Formulário de envio de nova senha
-routes.get ('/users/reset-password', UserController.resetPasswordForm)
-routes.post('/users/reset-password', ValidateController.resetPassword, UserController.resetPassword)
+routes.get ('/users/password-reset', UserController.resetPasswordForm)
+// routes.post('/users/password-reset', ValidateController.resetPassword, UserController.resetPassword)
 // Rotas de perfil de um usuário logado
 
 routes.get('/profile', ValidateController.show, ProfileController.show) // Mostrar o formulário com dados do usuário logado

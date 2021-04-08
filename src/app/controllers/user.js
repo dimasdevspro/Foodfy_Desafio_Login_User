@@ -4,8 +4,8 @@ const mailer = require('../../lib/mailer')
 
 module.exports = {
     registerForm(req, res){
-
-        res.render("session/register.njk")
+        const userAdmin = req.session
+        res.render("session/register.njk", {userAdmin})
     }, 
     async login(req, res){
 
@@ -128,7 +128,7 @@ await mailer.sendMail({
     <p>Não se preocupe, clique no link abaixo para recuperar sua senha</p>
     <p>
     
-    <a href="http://localhost:3000/users/password-reset?token=${token}" target="_blank">
+    <a href="http://localhost:3000/admin/users/password-reset?token=${token}" target="_blank">
     RECUPERAR SENHA</a>
     </p>`
 })
@@ -148,23 +148,13 @@ return res.render("session/login", {
             return res.render('session/password-reset.njk', {token: req.query.token})
     },
     resetPassword(req, res){
-        const {email, password, passwordRepeat, token} = req.body
-
+        const {name, email, password, passwordRepeat, token} = req.body
+        
         try{
-            //procurar o usuário que
-            
-
-            //ver se a senha birthDate
-
-
-            //verificar se o token expirou
-
-
-            //verificar se o token no expirou
-
-
+           
             //cria um novo hash de senhas
 
+            
             //atualiza o usuário que
 
 
@@ -173,6 +163,7 @@ return res.render("session/login", {
         }catch(err){
             console.error(err)
             return res.redirect("session/password-reset", {
+
                 error: "Erro inesperado, tente novamente!"
             })
         }

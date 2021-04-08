@@ -76,6 +76,47 @@ async function email (req, res, next){
 
     next()
 }
+
+async function resetPassword(req, res, next){
+     //procurar o usuário que
+            
+    const { email, password, token} = req.body
+
+    const user = await User.findOne({where: {email}})
+
+    if (!user) return res.render("session/password-reset", {
+        user: req.body,
+        token,
+        error: "Usuário não cadastrado!"
+    })
+
+            //ver se a senha bate
+            if(password != passwordRepeat) return res.render('session/reset-password', {
+                user: req.body,
+                token,
+                error: 'A senha e a repetição das senhas estão incorretas'
+            })
+
+            //verificar se o token expirou
+            if(token != user.reset_token) return res.render('session/password-reset', {
+                user: req.body,
+                error: 'Token inválido! Solicite uma nova recuperação de senha...'
+            })
+
+            //verificar se o token no expirou
+
+            let now = new Date()
+            now = now.setHours(now.getHours())
+
+            if (now > user.reset_token_experies) return res.render('session/password-reset', {
+                user: req.body,
+                error: 'Token expirado... solicite uma nova recuperação de senha...'
+            })
+
+            req.user = user
+            console.log(req.user)
+            next()
+}
 module.exports = {
     create,
     login,

@@ -1,7 +1,18 @@
-
+<div class="field user">
+        <div class="item">
+        <div>Nome</div>
+        <div class="field user input">
+            <input 
+             type="text"
+             name="name" 
+             placeholder="Digite seu nome completo" 
+             value="{{ user.name }}"
+            >
+        </div>
+</div>
 <div class="item">
         <div>Email</div>
-        <div class="input">
+        <div class="field user input">
             <input 
              type="email"
              name="email" 
@@ -13,7 +24,7 @@
 
 <div class="item">
         <div>Senha</div>
-        <div class="input">
+        <div class="field user input">
             <input 
              type="password"
              name="password" 
@@ -24,7 +35,7 @@
 
 <div class="item">
         <div>Repetir Senha</div>
-        <div class="input">
+        <div class="field user input">
             <input 
              type="password"
              name="passwordRepeat" 
@@ -34,3 +45,4 @@
 </div>
 
 <input type="hidden" name="token" value="{{token}}">
+</div>
