@@ -10,7 +10,8 @@
   #button-filter,
   .button-register,
   .button-acess,
-  .button-forgot {
+  .button-forgot,
+  .button-newkey {
     text-decoration: none;
     width: 100px;
     height: 40px;
@@ -35,12 +36,14 @@
   
   .form-newchef,
   .form-newadmin,
-  .form-user{
+  .form-user,
+  .form-password-container{
     height: 430px;
   }
   
   .form-login,
-  .form-forgot {
+  .form-forgot,
+  .password {
     height: 486px;
   }
   
