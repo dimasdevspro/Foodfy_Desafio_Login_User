@@ -80,7 +80,7 @@ async function email (req, res, next){
 async function resetPassword(req, res, next){
      //procurar o usuário que
             
-    const { email, password, token} = req.body
+    const { email, password, passwordRepeat, token} = req.body
 
     const user = await User.findOne({where: {email}})
 
@@ -114,12 +114,13 @@ async function resetPassword(req, res, next){
             })
 
             req.user = user
-            console.log(req.user)
+
             next()
 }
 module.exports = {
     create,
     login,
     show,
-    email
+    email,
+    resetPassword
 }

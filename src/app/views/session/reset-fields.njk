@@ -1,48 +1,29 @@
-<div class="field user">
+<div class="field user-newkey">
+        <div class="field user">
+                <div class="item">
+                        <div>Nome</div>
+                        <div class="field user input">
+                                <input type="text" name="name" placeholder="Digite seu nome completo" value="{{ user.name }}"></input>
+                        </div>
+                </div>
+                <div class="item">
+                        <div>Email</div>
+                        <div class="field user input">
+                                <input type="email" name="email" placeholder="Digite seu email" value="{{ user.email }}" onblur="Validate.apply(this, 'isEmail')"></input>
+                        </div>
+                </div>
+        </div>
         <div class="item">
-        <div>Nome</div>
-        <div class="field user input">
-            <input 
-             type="text"
-             name="name" 
-             placeholder="Digite seu nome completo" 
-             value="{{ user.name }}"
-            >
+                <div style="margin-bottom: 15px;">Senha</div>
+                <div class="field user input">
+                        <input type="password" name="password" placeholder="Digite uma nova senha" ></input>
+                </div>
         </div>
-</div>
-<div class="item">
-        <div>Email</div>
-        <div class="field user input">
-            <input 
-             type="email"
-             name="email" 
-             placeholder="Digite seu email" 
-             value="{{ user.email }}"
-             onblur="Validate.apply(this, 'isEmail')">
+        <div class="item">
+                <div style="margin-bottom: 15px; margin-top: 15px;">Repetir Senha</div>
+                <div class="field user input">
+                        <input type="password" name="passwordRepeat" placeholder="Repita a nova senha"></input>
+                </div>
         </div>
-</div>
-
-<div class="item">
-        <div>Senha</div>
-        <div class="field user input">
-            <input 
-             type="password"
-             name="password" 
-             placeholder="Digite uma nova senha!" 
-             >
-        </div>
-</div>
-
-<div class="item">
-        <div>Repetir Senha</div>
-        <div class="field user input">
-            <input 
-             type="password"
-             name="passwordRepeat" 
-             placeholder="Repita a nova senha!" 
-            >
-        </div>
-</div>
-
-<input type="hidden" name="token" value="{{token}}">
+        <input type="hidden" name="token" value="{{token}}"></input>
 </div>
