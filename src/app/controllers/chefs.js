@@ -35,7 +35,9 @@ module.exports = {
 
   },
   async create(req, res) {
-    return res.render("admin/chefs/create");
+
+    const userAdmin = req.session
+    return res.render("admin/chefs/create", {userAdmin});
   },
   async post(req, res) {
     // validando e todos os campos estão preenchidos
