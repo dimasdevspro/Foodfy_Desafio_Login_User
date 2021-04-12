@@ -77,7 +77,7 @@ module.exports = {
         ]
        
         return db.query(query, values)
-        // console.log(db.query(query, values))
+        
     },
     chefsSelectOptions() {
          return db.query(`
@@ -143,18 +143,16 @@ module.exports = {
     },
     search(params) {
         const { filter, limit, offset, callback } = params
-
+      
         let query = "",
-        filterQuery = "WHERE recipes.title = recipes.title IS NOT NULL",
+        filterQuery = "WHERE recipes.title = recipes.title",
         totalQuery = `(
             SELECT count(*) FROM recipes
         ) AS total`
-
         if (filter){
-
             filterQuery = `
-            WHERE recipes.title ILIKE '%${filter}% IS NOT NULL'
-            OR chefs.name ILIKE '%${filter}% IS NOT NULL'
+            WHERE recipes.title ILIKE '%${filter}%'
+            OR chefs.name ILIKE '%${filter}%'
             `
             
             totalQuery = `(
@@ -162,23 +160,25 @@ module.exports = {
                 ${filterQuery}
             ) AS total`
         }
-
         query =`
-       SELECT *, ${totalQuery}
-       FROM recipes_files 
-       FULL OUTER JOIN files 
-       ON recipes_files.files_id = files.id 
-       FULL OUTER JOIN recipes 
-       ON recipes_files.recipes_id = recipes.id
-       FULL OUTER JOIN chefs 
-       ON recipes.chef_id = chefs.id
-       ${filterQuery}
-       ORDER BY recipes.updated_at DESC
-       LIMIT $1 OFFSET $2
+        SELECT *, ${totalQuery}
+        FROM recipes_files 
+        FULL OUTER JOIN files 
+        ON recipes_files.files_id = files.id 
+        FULL OUTER JOIN recipes 
+        ON recipes_files.recipes_id = recipes.id
+        FULL OUTER JOIN chefs 
+        ON recipes.chef_id = chefs.id
+        ${filterQuery}
+        ORDER BY recipes.updated_at DESC
+        LIMIT $1 OFFSET $2
         `
+  
        return db.query(query, [limit, offset], function(err, results){
             if (err) throw `Database Error! ${err}` 
+ console.log(query)
             callback(results.rows)
+          
         })
        
        }

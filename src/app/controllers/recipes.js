@@ -60,7 +60,7 @@ module.exports = {
           for (i = 0; recipes.length > i; i++) {
             recipes[i].path = `${req.protocol}://${req.headers.host}${recipes[i].path.replace("public", "")}`,
             recipes[i].author = recipes[i].name
-          }
+          }console.log(recipes)
           return res.render("admin/recipes/index", {recipes, pagination, filter, userAdmin})
       }  
 
@@ -234,7 +234,7 @@ module.exports = {
         },
       };
 
-      await RecipeFile.create(reqIdsRecipeFile.body);
+      await RecipeFile.createId(reqIdsRecipeFile.body);
     }
 
     // atualizando o bd dos recipes
