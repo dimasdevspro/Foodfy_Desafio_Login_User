@@ -1,40 +1,34 @@
 {% extends "layout.njk" %}
-
 {% block content %}
     <div class="comum_div">
-         <form style="position: absolute;width: 790px; "id="form-delete" method="post" action="/chefs?_method=DELETE" >
-          <input type="hidden" name="id" value="{{chef.id}}">
-          <input type="hidden" name="file_id" value="{{chef.file_id}}">
+        <form style="position: absolute;width: 790px; " id="form-delete" method="post" action="/chefs?_method=DELETE">
             <div style="margin-left: 700px;">
                 <button id="del" type="submit">Deletar</button>
             </div>
-            
+            <input type="hidden" name="id" value="{{ chef.id }}">
+            <input type="hidden" name="file_id" value="{{ chef.file_id }}">
         </form>
         <form class="form-newchef" method="post" action="/chefs?_method=PUT" enctype="multipart/form-data">
             <div class="adm-chef">
                 <div style="float:left">
-                    <label >Editando Chef</label>
+                    <label>Editando Chef</label>
                 </div>
                 <div style="float:right">
                     <button id="sav" type="submit">Salvar chef</button>
                 </div>
             </div>
-                {% include "admin/chefs/fields.njk"%}
-            <input type="hidden" name="id" value="{{chef.id}}">
-            <input type="hidden" name="file_id" value="{{dataFile[0].file_id}}">
+            {% include "admin/chefs/fields.njk" %}
+            <input type="hidden" name="id" value="{{ chef.id }}">
+            <input type="hidden" name="file_id" value="{{ dataFile[0].file_id }}">
         </form>
-       
-        
-
-<script>
-    const formDelete = document.querySelector("#form-delete");
-formDelete.addEventListener("submit", function (event) {
-    const confirmation = confirm("Deseja Deletar?")
-    if (!confirmation) {
-        event.preventDefault();
-    }
-})
-</script>
+        <script>
+            const formDelete = document.querySelector("#form-delete");
+            formDelete.addEventListener("submit", function (event) {
+                const confirmation = confirm("Deseja Deletar?")
+                if (! confirmation) {
+                    event.preventDefault();
+                }
+            })
+        </script>
     </div>
-
 {% endblock %}

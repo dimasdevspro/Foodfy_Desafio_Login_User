@@ -1,62 +1,57 @@
 {% extends "layout.njk" %}
-
 {% block content %}
   <div class="comum_div">
     <div class="card_chef">
       <div class="subtitles_chef_id">
-        <p>Chef: {{chef.name}}</p>
+        <p>Chef:
+          {{ chef.name }}</p>
       </div>
       <div class="img_chef_id">
-        <img src="{{dataFile[0].src}}" alt=""/>
+        <img src="{{ dataFile[0].src }}" alt=""/>
       </div>
       <div class="edt">
-        {% if userAdmin.is_admin%}
-        <a id="edt" href="/chefs/{{chef.id}}/edit">
-          Editar Chef
-        </a>
+        {% if userAdmin.is_admin %}
+          <a id="edt" href="/chefs/{{ chef.id }}/edit">
+            Editar Chef
+          </a>
         {% endif %}
       </div>
       <div class="name_chef_id">
-        <p>{{chef.name}}</p>
+        <p>{{ chef.name }}</p>
       </div>
       <div class="total_recipes_chef_id">
-      <p>
-     {% if chef.total_recipes <= '1' %}
-     {{chef.total_recipes}}
-      receita
-    {% else %}
-    {{chef.total_recipes}}
-     receitas
-    {%endif%}
-      </p>
+        <p>
+          {% if chef.total_recipes <= '1' %}
+            {{ chef.total_recipes }}
+            receita
+          {% else %}
+            {{ chef.total_recipes }}
+            receitas
+          {% endif %}
+        </p>
+      </div>
     </div>
-    </div>
-    
   </div>
-</section>
-<section class="cards_recipes">
-    {% if chef.total_recipes > 0%}
-  {% for recipe in recipes %}
-
-    <section class="card_link1">
-      <div class="img_recipe">
-        <img src="{{recipe.image}}" alt=""/>
-      </div>
-    </section>
-    <section class="card_link2">
-      <div class="title_recipe">
-        <p>{{recipe.title}}</p>
-      </div>
-      <div class="author_recipe">
-        <p>por
-          {{recipe.author}}</p>
-      </div>
-      <a href="/recipes/{{recipe.id}}" class="link-view">Visualizar</a>
-    </section>
-  {% endfor %}
-  {% endif %}
-</section>
+  <section class="cards_recipes">
+    {% if chef.total_recipes > 0 %}
+      {% for recipe in recipes %}
+        <section class="card_link1">
+          <div class="img_recipe">
+            <img src="{{ recipe.image }}" alt=""/>
+          </div>
+        </section>
+        <section class="card_link2">
+          <div class="title_recipe">
+            <p>{{ recipe.title }}</p>
+          </div>
+          <div class="author_recipe">
+            <p>por
+              {{ recipe.author }}</p>
+          </div>
+          <a href="/recipes/{{ recipe.id }}" class="link-view">Visualizar</a>
+        </section>
+      {% endfor %}
+    {% endif %}
+  </section>
 </div>
-
-
 {% endblock %}

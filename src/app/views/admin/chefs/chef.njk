@@ -1,74 +1,55 @@
 {% extends "layout.njk" %}
-
 {% block content %}
-
   <section class="card_recipe">
-
     <div class="img_recipe_id">
-      <img src="{{item.image}}" alt=""/>
+      <img src="{{ item.image }}" alt=""/>
     </div>
-
     <div class="title_recipe_id">
-      <p>{{item.title}}</p>
+      <p>{{ item.title }}</p>
     </div>
-
     <div class="author_recipe_id">
-      <p>{{item.author}}</p>
+      <p>{{ item.author }}</p>
     </div>
-
     <div class="topic-ingredients">
-
       <div class="grid_recipe_id">
         <p class="subtitles_recipe_id">Ingredientes</p>
         <h4>Esconder</h4>
       </div>
-
       <div class="ingredients">
         <ul>
           {% for ingredient in item.ingredients %}
             <li>
-              {{ingredient}}
+              {{ ingredient }}
             </li>
           {% endfor %}
         </ul>
       </div>
-
     </div>
-
     <div class="topic-preparation">
-
       <div class="grid_recipe_id">
         <p class="subtitles_recipe_id">Modo de Preparo</p>
         <h4>Esconder</h4>
       </div>
-
       <div class="preparation">
         <ul>
           {% for preparation in item.preparations %}
             <li>
-              {{preparation}}
+              {{ preparation }}
             </li>
           {% endfor %}
         </ul>
       </div>
-
     </div>
-
     <div class="topic-information">
-
       <div class="grid_recipe_id">
         <p class="subtitles_recipe_id">Informações Adicionais</p>
         <h4>Esconder</h4>
       </div>
-
       <div class="information">
-        <p>{{item.informations}}</p>
+        <p>{{ item.informations }}</p>
       </div>
-      
     </div>
-
   </section>
-
-  <script src="scripts.js"></script>
-
+  <script src="scripts.js">
+  </script>
 {% endblock %}

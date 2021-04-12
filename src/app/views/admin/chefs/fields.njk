@@ -1,33 +1,30 @@
-
 {% block content %}
-            <div class="field">
-                <label for="">
-                    Nome
-                </label>
-                <input type="text" name="name" id="nam" value="{{chef.name}}" >
+    <div class="field">
+        <label for="">
+            Nome
+        </label>
+        <input type="text" name="name" id="nam" value="{{ chef.name }}">
+    </div>
+        <div class="field-upload-chef">
+            <div id="field-upload-chef-button">
+                <img src="" alt="">
+                    <p>Enviar Avatar</p>
             </div>
-
-            <div class="field-upload-chef">
-                    <div id="field-upload-chef-button">
-                            <img src="" alt="">
-                            <p>Enviar Avatar</p>
-                        </div>
-                    <div id="field-upload-chef-input">
-                         <input  type="file" name="photo" accept="image/*" onchange="PhotosUpload.handleFileInput(event)">
-                    </div>
-                <div id="photos-preview">
-                   {% if dataFile %}
-                        <div class="photo" id="{{dataFile[0].file_id}}">
-                            <img src="{{dataFile[0].src}}" alt="{{dataFile[0].filename}}">
+        <div id="field-upload-chef-input">
+        <input type="file" name="photo" accept="image/*" onchange="PhotosUpload.handleFileInput(event)">
+        </div>
+            <div id="photos-preview">
+                {% if dataFile %}
+                    <div class="photo" id="{{ dataFile[0].file_id }}">
+                        <img src="{{ dataFile[0].src }}" alt="{{ dataFile[0].filename }}">
                             <i class="material-icons" onclick="PhotosUpload.removeOldPhoto(event)">
                                 close
                             </i>
                         </div>
-
-                        <input type="hidden" name="removed_files">
-
-                        {% endif %}
-                        
+                    </div>
                 </div>
+                <input type="hidden" name="removed_files">
+                {% endif %}
             </div>
+        </div>
 {% endblock %}
