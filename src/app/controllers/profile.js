@@ -1,10 +1,6 @@
 const User = require("../models/User");
 module.exports = {
-  logout(req, res) {
-    req.session.destroy();
-    return res.redirect("/admin/users/login");
-  },
-  async show(req, res) {
+  async showProfile(req, res) {
     try {
       const { user } = req;
       req.session.is_admin = user.is_admin;
@@ -13,7 +9,7 @@ module.exports = {
       console.error(err);
     }
   },
-  async put(req, res) {
+  async putProfile(req, res) {
     try {
       let { name, email, is_admin } = req.body;
       await User.update(req.body.id, {
@@ -31,4 +27,8 @@ module.exports = {
       });
     }
   },
+  logout(req, res) {
+    req.session.destroy();
+    return res.redirect("/admin/users/login");
+  }
 };

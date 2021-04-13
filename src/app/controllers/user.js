@@ -3,7 +3,7 @@ const User = require("../models/User");
 const mailer = require("../../lib/mailer");
 const { hash } = require("bcryptjs");
 module.exports = {
-  registerForm(req, res) {
+  registerFormUser(req, res) {
     const userAdmin = req.session;
     res.render("session/register.njk", { userAdmin });
   },
@@ -14,18 +14,18 @@ module.exports = {
     req.session.userId = req.user.id;
     return res.redirect("/admin/profile");
   },
-  async list(req, res) {
+  async listUsers(req, res) {
     const user = req.session;
     const usersComuns = await User.findAll();
     return res.render("session/list.njk", { usersComuns, user });
   },
-  async editUser(req, res) {
+  async editUserForm(req, res) {
     const id = req.params.id;
     let user = await User.findOne({ where: { id } });
     const userAdmin = req.session;
     return res.render("session/edit.njk", { user, userAdmin });
   },
-  async post(req, res) {
+  async postNewUser(req, res) {
     const userId = await User.create(req.body);
     req.session.userId = userId;
     return res.redirect("/admin/users/list");
@@ -33,7 +33,7 @@ module.exports = {
   forgotpasswordForm(req, res) {
     return res.render("session/forgot-password.njk");
   },
-  async put(req, res) {
+  async putUser(req, res) {
     try {
       let { name, email, is_admin } = req.body;
       if (is_admin == undefined) {
@@ -61,7 +61,7 @@ module.exports = {
       });
     }
   },
-  async delete(id) {
+  async deleteUser(id) {
     try {
       await User.delete(req.body.id);
       return res.render("session/list", {

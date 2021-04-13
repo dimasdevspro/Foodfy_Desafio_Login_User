@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const { compare } = require("bcryptjs");
-function create(req, res, next) {
+function verifyFormCreateUser(req, res, next) {
   const keys = Object.keys(req.body);
   for (key of keys) {
     if (req.body[key] == "") {
@@ -35,7 +35,7 @@ async function verifyLogin(req, res, next) {
   next();
 }
 
-async function show(req, res, next) {
+async function verifyLogged(req, res, next) {
   const { userId: id } = req.session;
   const user = await User.findOne({ where: { id } });
   if (!user)
@@ -58,7 +58,7 @@ async function existeEmail(req, res, next) {
   next();
 }
 
-async function resetPassword(req, res, next) {
+async function verifyDataForResetPassword(req, res, next) {
   const { email, password, passwordRepeat, token } = req.body;
   const user = await User.findOne({ where: { email } });
   if (!user)
@@ -98,10 +98,10 @@ async function ifAdminInLogin(req, res, next) {
   next();
 }
 module.exports = {
-  create,
+  verifyFormCreateUser,
   verifyLogin,
-  show,
+  verifyLogged,
   existeEmail,
-  resetPassword,
+  verifyDataForResetPassword,
   ifAdminInLogin,
 };
