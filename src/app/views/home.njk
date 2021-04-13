@@ -16,31 +16,22 @@
         </p>
       </div>
     </div>
-
-    <section class="cards_recipes_home">
-      
+  <section class="cards_recipes_home">    
       {% for recipe in arrayRecipes %}
         {% if loop.index0 < 6 %}
-          <div class="card">
-             
+          <div class="card">          
                 <div class="img_recipe_home">
                   <img src="{{recipe.src}}" alt="{{recipe.filename}}" />
-                </div>
-              
+                </div>              
             <div class="title_recipe">
               <p>{{recipe.title}}</p>
-            </div>
-            
-                
+            </div>               
                 <div class="author_recipe">
                   <p>por {{recipe.author}}</p>
-                </div>
-              
-            
+                </div>           
           </div>
         {% endif %}
       {% endfor %}
-
     </section>
 <script src="/scripts.js"></script>
 {% endblock %}

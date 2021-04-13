@@ -6,7 +6,6 @@
     {% include "parts/styles.njk"%}
     <title>Foodfy</title>
   </head>
-
   <body>
     {% include "parts/messages.njk"%}
     <div class="menu">
@@ -15,10 +14,8 @@
       </div>
       {% include "parts/header.njk" %}
     </div>
-
     {% block content %}{% endblock %}
-
     {% include "parts/footer.njk" %}
- <script src="/scripts.js"></script>
+    <script src="/scripts.js"></script>
   </body>
 </html>
