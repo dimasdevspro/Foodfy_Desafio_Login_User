@@ -30,6 +30,7 @@ async function login(req, res, next) {
       user: req.body,
       error: "Senha incorreta.",
     });
+
   req.user = user;
   next();
 }
@@ -87,10 +88,20 @@ async function resetPassword(req, res, next) {
   req.user = user;
   next();
 }
+
+async function ifAdminInLogin(req, res, next) {
+  if (req.session.is_admin == true) {
+    const { userId: id } = req.session;
+    const user = await User.findOne({ where: { id } });
+    return res.render("session/index.njk", { user });
+  } 
+  next();
+}
 module.exports = {
   create,
   login,
   show,
   email,
   resetPassword,
+  ifAdminInLogin,
 };
