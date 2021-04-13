@@ -75,7 +75,7 @@ module.exports = {
       });
     }
   },
-  async sendEmail(req, res) {
+  async sendEmailByRecoveryPassword(req, res) {
     const user = req.user;
     try {
       const token = crypto.randomBytes(20).toString("hex");
