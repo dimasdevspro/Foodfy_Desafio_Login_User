@@ -6,7 +6,7 @@ const UserController = require("../app/controllers/user");
 const ValidateController = require("../app/validators/session");
 const { onlyAdmin } = require("../app/middlewares/session");
 
-routes.get("/users/login", UserController.loginForm);
+routes.get("/users/login", ValidateController.ifAdminInLogin, UserController.loginForm);
 routes.post("/users", ValidateController.login, UserController.login);
 routes.get("/users/forgot-password", UserController.forgotpasswordForm);
 routes.post(
