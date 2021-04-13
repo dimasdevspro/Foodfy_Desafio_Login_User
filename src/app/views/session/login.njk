@@ -1,10 +1,8 @@
 {% extends "layout.njk"%}
 
 {% block content %}
-
   <section class="form-login">
-    <form method="post" action="/admin/users">
-     
+    <form method="post" action="/admin/users">    
       <div class="field user-login">
          <div class="login-user">
         <label>Iniciar Sessão</label>
@@ -13,21 +11,16 @@
           <p>Nome</p>
           <input type="text" name="name" id="nam" value="{{user.name}}" placeholder="Digite o nome completo">
         </div>
-
         <div class="field user input">
           <p>Senha</p>
           <input type="password" name="password" id="pass" value="{{user.password}}" placeholder="Digite sua senha">
         </div>
       </div>
-      <div class="field_acess_forgot-password">
-        
-            <a href="/admin/users/forgot-password">Esqueci a senha</a>
-        
-      
+      <div class="field_acess_forgot-password">        
+            <a href="/admin/users/forgot-password">Esqueci a senha</a>      
         <button class="button-acess" type="submit">Acessar</button>
       </div>
       </div>
     </form>
   </section>
-
 {% endblock %}

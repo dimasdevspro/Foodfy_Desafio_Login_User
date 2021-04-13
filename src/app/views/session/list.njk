@@ -2,15 +2,13 @@
 
 {% block content %}
 
-  <div id="admin-users">
-    
+  <div id="admin-users">   
     <div class="header user">
       <p>Usuários</p>
       <a id="button-create" href="/admin/users/register">Novo</a>
     </div>
     <div class="container_cards_users">
-      {% for userComun in usersComuns %}
-  
+      {% for userComun in usersComuns %} 
         <div class="users">
              <p id="user-name">{{userComun.name}}</p>
              <p id="user-email">{{userComun.email}}</p>
@@ -25,11 +23,7 @@
           {% endif %}
         </div>
       {% endfor %}
-    </div>
-   
+    </div>  
   </div>
-
-
   </div>
-
 {% endblock %}

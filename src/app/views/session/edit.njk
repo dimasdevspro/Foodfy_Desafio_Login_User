@@ -1,5 +1,4 @@
 {% extends "layout.njk" %}
-
 {% block content %}
     <div class="comum_div">
         <form style="position: absolute; width: 940px; " id="form-del" method="post" action="/admin/users/edit?_method=DELETE">
@@ -13,8 +12,7 @@
             <div class="adm-user">
                 <div style="float:left">
                     <label>Editar</label>
-                </div>
-                
+                </div>               
             </div>
             {% include "session/fields.njk" %}
             <input type="hidden" name="id" value="{{user.id}}">

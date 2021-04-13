@@ -1,24 +1,26 @@
 <div class="field user">
     <div class="field user input">
         <p>Nome</p>
-        <input type="text" name="name" id="nam" value="{{ user.name }}" placeholder="Digite o nome completo"></div>
+        <input type="text" name="name" id="nam" value="{{ user.name }}" placeholder="Digite o nome completo">
+    </div>
+    <div class="field user input">
+        <p>Email</p>
+        <input type="email" name="email" id="email" value="{{ user.email }}" placeholder="Digite seu e-mail" onblur="Validate.apply(this, 'isEmail')">
+    </div>
+</div>
+<div>
+    {% if not user.id %}
         <div class="field user input">
-            <p>Email</p>
-            <input type="email" name="email" id="email" value="{{ user.email }}" placeholder="Digite seu e-mail" onblur="Validate.apply(this, 'isEmail')"></div>
+            <p>Senha</p>
+            <input type="password" name="password" id="passr" placeholder="Insira uma senha segura">
         </div>
-        <div>
-            {% if not user.id %}
-                <div class="field user input">
-                    <p>Senha</p>
-                    <input type="password" name="password" id="passr" placeholder="Insira uma senha segura">
-                    </div>
-                    <div class="field user input">
-                        <p>Repita a Senha</p>
-                        <input type="password" name="passwordRepeat" id="pass">
-                    </div>
-            {% endif %}
-                        <div class="field user radio">
-                            <input type="checkbox" name="is_admin" id="is_admin" value="{{ user.is_admin }}" {% if user.is_admin == true %} checked{% endif %}>
-                                <p>Administrador?</p>
-                    
-                        </div>
+        <div class="field user input">
+            <p>Repita a Senha</p>
+            <input type="password" name="passwordRepeat" id="pass">
+        </div>
+    {% endif %}
+    <div class="field user radio">
+        <input type="checkbox" name="is_admin" id="is_admin" value="{{ user.is_admin }}" {% if user.is_admin == true %} checked="checked" {% endif %}>
+        <p>Administrador?</p>
+    </div>
+</div>
