@@ -46,7 +46,7 @@ async function show(req, res, next) {
   next();
 }
 
-async function email(req, res, next) {
+async function existeEmail(req, res, next) {
   const { email } = req.body;
   const user = await User.findOne({ where: { email } });
   if (!user)
@@ -101,7 +101,7 @@ module.exports = {
   create,
   verifyLogin,
   show,
-  email,
+  existeEmail,
   resetPassword,
   ifAdminInLogin,
 };
