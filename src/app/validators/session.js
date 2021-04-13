@@ -16,7 +16,7 @@ function create(req, res, next) {
   next();
 }
 
-async function login(req, res, next) {
+async function verifyLogin(req, res, next) {
   const { name, password } = req.body;
   const user = await User.findOne({ where: { name } });
   if (!user)
@@ -99,7 +99,7 @@ async function ifAdminInLogin(req, res, next) {
 }
 module.exports = {
   create,
-  login,
+  verifyLogin,
   show,
   email,
   resetPassword,
