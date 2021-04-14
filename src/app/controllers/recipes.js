@@ -3,7 +3,7 @@ const File = require("../models/File");
 const RecipeFile = require("../models/RecipeFile");
 module.exports = {
   async home(req, res) {
-    let results = await Recipe.all();
+    let results = await Recipe.queryAllRecipes();
     let arrayRecipes = [];
     const dataRecipe = {
       creatorData: function (data) {
@@ -25,10 +25,10 @@ module.exports = {
     };
     dataRecipe.creatorData(results.rows);
   },
-  about(req, res) {
+  aboutSite(req, res) {
     return res.render("about");
   },
-  async index(req, res) {
+  async indexRecipesHome(req, res) {
     const userAdmin = req.session;
     let { filter, page, limit } = req.query;
     page = page || 1;
@@ -62,7 +62,7 @@ module.exports = {
     };
     await Recipe.search(params);
   },
-  create(req, res) {
+  createRecipe(req, res) {
     const userAdmin = req.session;
     Recipe.chefsSelectOptions()
       .then(function (results) {
@@ -73,7 +73,7 @@ module.exports = {
         throw new Error(err);
       });
   },
-  async post(req, res) {
+  async postNewRecipe(req, res) {
     const keys = Object.keys(req.body);
     for (key of keys) {
       if (req.body[key] == "") {
@@ -94,7 +94,7 @@ module.exports = {
     results = await RecipeFile.create(reqIdsRecipeFile.body);
     return res.redirect(`recipes/${recipeId}`);
   },
-  async show(req, res) {
+  async showRecipe(req, res) {
     const userAdmin = req.session;
     let results = await Recipe.find(req.params.id);
     const recipe = results.rows[0];
@@ -114,7 +114,7 @@ module.exports = {
       return res.render("admin/recipes/show", { recipe, dataFile, userAdmin });
     }
   },
-  async edit(req, res) {
+  async editRecipe(req, res) {
     const userAdmin = req.session;
     let results = await Recipe.find(req.params.id);
     const recipe = results.rows[0];
@@ -146,7 +146,7 @@ module.exports = {
       });
     }
   },
-  async put(req, res) {
+  async putRecipe(req, res) {
     const keys = Object.keys(req.body);
     for (key of keys) {
       if (req.body[key] == "" && key != "removed_files") {
@@ -176,7 +176,7 @@ module.exports = {
     const recipeUpdatedId = req.body.id;
     return res.redirect(`/recipes/${recipeUpdatedId}`);
   },
-  async delete(req, res) {
+  async deleteRecipe(req, res) {
     const recipeId = req.body;
     await RecipeFile.delete(recipeId.files_id);
     await File.delete(recipeId.files_id);

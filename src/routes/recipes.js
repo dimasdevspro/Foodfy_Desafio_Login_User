@@ -5,13 +5,13 @@ const searchController = require("../app/controllers/search");
 const { onlyAdmin } = require("../app/middlewares/session");
 const multer = require("../app/middlewares/multer");
 
-routes.get("/search", searchController.index);
-routes.get("/", recipesController.index);
-routes.get("/create", onlyAdmin, recipesController.create);
-routes.post("/", onlyAdmin, multer.array("photos", 5), recipesController.post);
-routes.get("/:id", recipesController.show);
-routes.get("/:id/edit", recipesController.edit);
-routes.put("/", onlyAdmin, multer.array("photos", 5), recipesController.put);
-routes.delete("/", onlyAdmin, recipesController.delete);
+routes.get("/search", searchController.indexRecipes);
+routes.get("/", recipesController.indexRecipesHome);
+routes.get("/create", onlyAdmin, recipesController.createRecipe);
+routes.post("/", onlyAdmin, multer.array("photos", 5), recipesController.postNewRecipe);
+routes.get("/:id", recipesController.showRecipe);
+routes.get("/:id/edit", recipesController.editRecipe);
+routes.put("/", onlyAdmin, multer.array("photos", 5), recipesController.putRecipe);
+routes.delete("/", onlyAdmin, recipesController.deleteRecipe);
 
 module.exports = routes;

@@ -1,7 +1,7 @@
 const Chef = require("../models/Chef");
 const File = require("../models/File");
 module.exports = {
-  async index(req, res) {
+  async indexChefs(req, res) {
     const userAdmin = req.session;
     let { filter, page, limit } = req.query;
     page = page || 1;
@@ -33,11 +33,11 @@ module.exports = {
     };
     await Chef.paginate(params);
   },
-  async create(req, res) {
+  async createForm(req, res) {
     const userAdmin = req.session;
     return res.render("admin/chefs/create", { userAdmin });
   },
-  async post(req, res) {
+  async postNewChef(req, res) {
     const keys = Object.keys(req.body);
     for (key of keys) {
       if (req.body[key] == "") {
@@ -58,7 +58,7 @@ module.exports = {
     const chefId = results.rows[0].id;
     return res.redirect(`/chefs/${chefId}`);
   },
-  async show(req, res) {
+  async showChef(req, res) {
     const userAdmin = req.session;
     let results = await Chef.find(req.params.id);
     const chef = results.rows[0];
@@ -90,7 +90,7 @@ module.exports = {
       });
     }
   },
-  async edit(req, res) {
+  async editChef(req, res) {
     const userAdmin = req.session;
     let results = await Chef.find(req.params.id);
     const chef = results.rows[0];
@@ -118,7 +118,7 @@ module.exports = {
       });
     }
   },
-  async put(req, res) {
+  async putChef(req, res) {
     const keys = Object.keys(req.body);
     for (key of keys) {
       if (req.body[key] == "" && key != "removed_files") {
@@ -151,7 +151,7 @@ module.exports = {
       return res.redirect(`/chefs/${req.body.id}`);
     }
   },
-  async delete(req, res) {
+  async deleteChef(req, res) {
     await Chef.delete(req.body.id);
     await File.delete(req.body.file_id);
     return res.redirect("/chefs");

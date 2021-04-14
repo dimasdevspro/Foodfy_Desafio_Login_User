@@ -3,7 +3,7 @@ const { hash } = require("bcryptjs");
 const Recipe = require("../models/Recipe");
 const fs = require("fs");
 module.exports = {
-  async findOne(filters) {
+  async findOneUser(filters) {
     try {
       let query = "SELECT users.* FROM users";
       Object.keys(filters).map((key) => {
@@ -20,7 +20,7 @@ module.exports = {
       console.error(err);
     }
   },
-  async findAll(filters) {
+  async findAllUsers(filters) {
     try {
       let query = "SELECT * FROM users";
       let results = await db.query(query);

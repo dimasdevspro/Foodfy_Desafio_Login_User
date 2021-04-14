@@ -11,6 +11,6 @@ routes.use("/admin", admin);
 routes.use("/chefs", chefs);
 routes.use("/recipes", recipes);
 
-routes.get("/about", recipesController.about);
+routes.get("/about", recipesController.aboutSite);
 
 module.exports = routes;

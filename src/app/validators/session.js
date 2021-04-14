@@ -18,7 +18,7 @@ function verifyFormCreateUser(req, res, next) {
 
 async function verifyLogin(req, res, next) {
   const { name, password } = req.body;
-  const user = await User.findOne({ where: { name } });
+  const user = await User.findOneUser({ where: { name } });
   if (!user)
     return res.render("session/login", {
       user: req.body,
@@ -37,7 +37,7 @@ async function verifyLogin(req, res, next) {
 
 async function verifyLogged(req, res, next) {
   const { userId: id } = req.session;
-  const user = await User.findOne({ where: { id } });
+  const user = await User.findOneUser({ where: { id } });
   if (!user)
     return res.render("session/index.njk", {
       error: "Usuário não encontrado!",
@@ -48,7 +48,7 @@ async function verifyLogged(req, res, next) {
 
 async function existeEmail(req, res, next) {
   const { email } = req.body;
-  const user = await User.findOne({ where: { email } });
+  const user = await User.findOneUser({ where: { email } });
   if (!user)
     return res.render("session/login", {
       user: req.body,
@@ -60,7 +60,7 @@ async function existeEmail(req, res, next) {
 
 async function verifyDataForResetPassword(req, res, next) {
   const { email, password, passwordRepeat, token } = req.body;
-  const user = await User.findOne({ where: { email } });
+  const user = await User.findOneUser({ where: { email } });
   if (!user)
     return res.render("session/password-reset", {
       user: req.body,
@@ -92,7 +92,7 @@ async function verifyDataForResetPassword(req, res, next) {
 async function ifAdminInLogin(req, res, next) {
   if (req.session.is_admin == true) {
     const { userId: id } = req.session;
-    const user = await User.findOne({ where: { id } });
+    const user = await User.findOneUser({ where: { id } });
     return res.render("session/index.njk", { user });
   } 
   next();

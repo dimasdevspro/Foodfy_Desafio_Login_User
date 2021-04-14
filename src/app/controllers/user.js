@@ -16,12 +16,12 @@ module.exports = {
   },
   async listUsers(req, res) {
     const user = req.session;
-    const usersComuns = await User.findAll();
+    const usersComuns = await User.findAllUsers();
     return res.render("session/list.njk", { usersComuns, user });
   },
   async editUserForm(req, res) {
     const id = req.params.id;
-    let user = await User.findOne({ where: { id } });
+    let user = await User.findOneUser({ where: { id } });
     const userAdmin = req.session;
     return res.render("session/edit.njk", { user, userAdmin });
   },
@@ -46,7 +46,7 @@ module.exports = {
         email,
         is_admin,
       });
-      const usersComuns = await User.findAll();
+      const usersComuns = await User.findAllUsers();
       const userAdmin = req.session;
       return res.render("session/list", {
         usersComuns,
@@ -109,7 +109,7 @@ module.exports = {
   },
   async resetPasswordForm(req, res) {
     let reset_token = req.query.token;
-    const user = await User.findOne({ where: { reset_token } });
+    const user = await User.findOneUser({ where: { reset_token } });
     return res.render("session/password-reset.njk", {
       token: req.query.token,
       user,

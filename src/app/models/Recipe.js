@@ -2,7 +2,7 @@ const db = require("../../config/db");
 const { date } = require("../../lib/utils");
 
 module.exports = {
-  all() {
+  queryAllRecipes() {
     try {
       return db.query(`SELECT * 
        FROM recipes_files t1

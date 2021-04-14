@@ -1,6 +1,6 @@
 const Recipe = require("../models/Recipe");
 module.exports = {
-  async index(req, res) {
+  async indexRecipes(req, res) {
     try {
       let { filter, page, limit } = req.query;
       filter;
