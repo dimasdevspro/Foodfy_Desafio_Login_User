@@ -37,14 +37,13 @@ width: 100%;
 }
 
 .menu_links header, .menu_links header nav.primary {
-  align-items: center;
-  display: inline-flex;
+
+  display: flex;
   justify-content: space-around;
 }
 
 .menu_links header nav.primary {
   top: 0;
-  margin-bottom: 16px;
 } 
 
 .menu_links header nav.primary ul li {
@@ -205,7 +204,7 @@ width: 100%;
 .container_cards_chefs {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   margin: 30px 230px;
   margin-bottom: 155px;
   gap: 61px;
