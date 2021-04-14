@@ -24,7 +24,7 @@ module.exports = {
             ].path.replace("public", "")}`),
               (recipes[i].author = recipes[i].name);
           }
-          console.log(pagination, filter);
+        
           return res.render("admin/recipes/index", {
             recipes,
             pagination,

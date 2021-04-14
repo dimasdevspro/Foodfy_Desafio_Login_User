@@ -196,7 +196,7 @@ module.exports = {
         `;
     return db.query(query, [limit, offset], function (err, results) {
       if (err) throw `Database Error! ${err}`;
-      console.log(query);
+      
       callback(results.rows);
     });  
     } catch (err) {

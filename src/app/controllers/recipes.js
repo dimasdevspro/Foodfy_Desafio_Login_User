@@ -52,7 +52,7 @@ module.exports = {
           ].path.replace("public", "")}`),
             (recipes[i].author = recipes[i].name);
         }
-        console.log(recipes);
+       
         return res.render("admin/recipes/index", {
           recipes,
           pagination,

@@ -51,7 +51,7 @@ module.exports = {
     req.session.userId = userId;
     return res.redirect("/admin/users/list");   
     } catch (err) {
-      console.log(err)
+      console.error(err)
     }
   },
   forgotpasswordForm(req, res) {

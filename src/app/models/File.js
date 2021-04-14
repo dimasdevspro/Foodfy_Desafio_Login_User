@@ -12,7 +12,7 @@ module.exports = {
         RETURNING id
         `;
     const values = [data.filename, data.path];
-    console.log(values);
+   
     return db.query(query, values);  
     } catch (err) {
       console.error(err)
