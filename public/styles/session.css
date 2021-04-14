@@ -162,7 +162,7 @@
   .card_chef {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(3, 320px);
+    grid-template-columns: repeat(3, 310px);
   }
   
   .img_chef_id {
@@ -234,7 +234,6 @@
   form .field.upload {
     position: relative;
     display: flex;
-    height: 180px;
   }
   
   form .field.upload .upload {
@@ -242,7 +241,7 @@
   }
   
   form .field.upload .upload label {
-    margin: 0px 0px 10.5px;
+    margin: 50px 0px 10.5px;
   }
   
   form .field.upload .upload #photos-upload {
