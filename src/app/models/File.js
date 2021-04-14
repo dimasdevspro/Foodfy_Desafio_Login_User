@@ -3,6 +3,7 @@ const fs = require("fs");
 
 module.exports = {
   create(data) {
+    try {
     const query = `
         INSERT INTO files (
             filename,
@@ -12,7 +13,10 @@ module.exports = {
         `;
     const values = [data.filename, data.path];
     console.log(values);
-    return db.query(query, values);
+    return db.query(query, values);  
+    } catch (err) {
+      console.error(err)
+    }
   },
   find(id) {
     try {

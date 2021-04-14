@@ -28,7 +28,11 @@ module.exports = {
     }
   },
   logout(req, res) {
-    req.session.destroy();
-    return res.redirect("/admin/users/login");
+    try{
+      req.session.destroy();
+      return res.redirect("/admin/users/login");
+    }catch(err){
+      console.error(err)
+    }
   }
 };

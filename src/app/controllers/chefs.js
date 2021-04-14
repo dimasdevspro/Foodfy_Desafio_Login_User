@@ -2,7 +2,8 @@ const Chef = require("../models/Chef");
 const File = require("../models/File");
 module.exports = {
   async indexChefs(req, res) {
-    const userAdmin = req.session;
+    try{
+      const userAdmin = req.session;
     let { filter, page, limit } = req.query;
     page = page || 1;
     limit = limit || 6;
@@ -32,34 +33,46 @@ module.exports = {
       },
     };
     await Chef.paginate(params);
+    }catch(err){
+      console.error(err)
+    }
   },
   async createForm(req, res) {
+   try{
     const userAdmin = req.session;
     return res.render("admin/chefs/create", { userAdmin });
+   }catch(err){
+     console.error(err)
+   }
   },
   async postNewChef(req, res) {
-    const keys = Object.keys(req.body);
-    for (key of keys) {
-      if (req.body[key] == "") {
-        res.send("Please, fill all fields!");
+    try{
+      const keys = Object.keys(req.body);
+      for (key of keys) {
+        if (req.body[key] == "") {
+          res.send("Please, fill all fields!");
+        }
       }
-    }
-    if (req.files.length == 0) res.send("Please, send at least one image!");
-    const dataFilesChef = {
-      filename: req.files[0].filename,
-      path: req.files[0].path,
-    };
-    let results = await File.create(dataFilesChef);
-    const dataChef = {
-      name: req.body.name,
-      file_id: results.rows[0].id,
-    };
-    results = await Chef.create({ ...dataChef });
-    const chefId = results.rows[0].id;
-    return res.redirect(`/chefs/${chefId}`);
+      if (req.files.length == 0) res.send("Please, send at least one image!");
+      const dataFilesChef = {
+        filename: req.files[0].filename,
+        path: req.files[0].path,
+      };
+      let results = await File.create(dataFilesChef);
+      const dataChef = {
+        name: req.body.name,
+        file_id: results.rows[0].id,
+      };
+      results = await Chef.create({ ...dataChef });
+      const chefId = results.rows[0].id;
+      return res.redirect(`/chefs/${chefId}`);
+    }catch(err){
+      console.error(err)
+    }    
   },
   async showChef(req, res) {
-    const userAdmin = req.session;
+    try{
+      const userAdmin = req.session;
     let results = await Chef.find(req.params.id);
     const chef = results.rows[0];
     if (!chef) return res.send("Chef Not Found!");
@@ -89,9 +102,13 @@ module.exports = {
         userAdmin,
       });
     }
+    }catch(err){
+      console.error(err)
+    }
   },
   async editChef(req, res) {
-    const userAdmin = req.session;
+    try{
+      const userAdmin = req.session;
     let results = await Chef.find(req.params.id);
     const chef = results.rows[0];
     if (!chef) res.send("Chefs not found!");
@@ -117,9 +134,13 @@ module.exports = {
         userAdmin,
       });
     }
+    }catch(err){
+      console.error(err)
+    }
   },
   async putChef(req, res) {
-    const keys = Object.keys(req.body);
+    try{
+      const keys = Object.keys(req.body);
     for (key of keys) {
       if (req.body[key] == "" && key != "removed_files") {
         res.send("Please, fill all fields!");
@@ -150,10 +171,19 @@ module.exports = {
       results = await Chef.update({ ...dataChef });
       return res.redirect(`/chefs/${req.body.id}`);
     }
+    }catch(err){
+      console.error(err)
+    }
+    
   },
   async deleteChef(req, res) {
+    try{
     await Chef.delete(req.body.id);
     await File.delete(req.body.file_id);
-    return res.redirect("/chefs");
+    return res.redirect("/chefs"); 
+    }catch(err){
+      console.error(err)
+    }
+   
   },
 };

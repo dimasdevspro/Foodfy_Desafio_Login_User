@@ -4,19 +4,34 @@ const User = require("../models/User");
 const { hash } = require("bcryptjs");
 module.exports = {
   login(req, res) {
+    try {
     req.session.userId = req.user.id;
     req.session.is_admin = req.user.is_admin;
-    return res.redirect("/users");
+    return res.redirect("/users");  
+    } catch (err) {
+      console.error(err)
+    }   
   },
   loginForm(req, res) {
-    return res.render("session/login");
+    try {
+      return res.render("session/login");
+    } catch (err) {
+      console.error(err)
+    }
   },
   logout(req, res) {
-    req.session.destroy();
-    return res.redirect("/");
+    try {
+      req.session.destroy();
+      return res.redirect("/");
+    } catch (error) {
+    }
   },
   forgotForm(req, res) {
-    return res.render("session/forgot-password");
+    try {
+      return res.render("session/forgot-password");
+    } catch (err) {
+      console.error(err)
+    }
   },
   async forgot(req, res) {
     const user = req.user;
@@ -51,7 +66,11 @@ module.exports = {
     }
   },
   resetForm(req, res) {
-    return res.render("session/password-reset", { token: req.query.token });
+    try {
+      return res.render("session/password-reset", { token: req.query.token });
+    } catch (err) {
+      console.error(err)
+    }
   },
   async reset(req, res) {
     const user = req.user;

@@ -3,14 +3,19 @@ const { date } = require("../../lib/utils");
 
 module.exports = {
   all() {
-    return db.query(`SELECT *
+    try {
+      return db.query(`SELECT *
       FROM chefs t1
       FULL OUTER JOIN files t2
       ON t1.file_id = t2.id
       WHERE file_id IS NOT NULL
       ORDER BY t1.name`);
+    } catch (err) {
+      console.error(err)
+    }
   },
   create(data) {
+    try {
     const query = `
         INSERT INTO chefs (
             name,
@@ -21,10 +26,14 @@ module.exports = {
     `;
     const values = [data.name, data.file_id, date(Date.now()).iso];
 
-    return db.query(query, values);
+    return db.query(query, values); 
+    } catch (err) {
+      console.error(err)
+    }   
   },
   find(id) {
-    return db.query(
+    try {
+      return db.query(
       `
         SELECT chefs.*, count(recipes) AS total_recipes
         FROM chefs
@@ -33,8 +42,12 @@ module.exports = {
         GROUP BY chefs.id`,
       [id]
     );
+    } catch (err) {
+      console.error(err)
+    }  
   },
   findBy(filter, callback) {
+    try {
     db.query(
       `
         SELECT chefs.*, count(recipes) AS total_recipes
@@ -48,10 +61,14 @@ module.exports = {
 
         callback(results.rows);
       }
-    );
+    );  
+    } catch (err) {
+      console.error(err)
+    }
   },
   findRecipes(id) {
-    return db.query(
+    try {
+     return db.query(
       `
         SELECT recipes.*, chefs.name AS author
         FROM chefs
@@ -59,9 +76,13 @@ module.exports = {
         WHERE chefs.id = $1
         `,
       [id]
-    );
+    );  
+    } catch (err) {
+      console.error(err)
+    }
   },
   update(data) {
+    try {
     const query = `
         UPDATE chefs SET
         name=($1),
@@ -72,21 +93,33 @@ module.exports = {
 
     return db.query(query, values, function (err) {
       if (err) throw `Database error ${err}`;
-    });
+    });  
+    } catch (err) {
+      console.error(err)
+    }
   },
   delete(id) {
+    try {
     return db.query(`DELETE FROM chefs WHERE id = $1`, [id], function (err) {
       if (err) throw `Database Error! ${err}`;
-    });
+    });  
+    } catch (err) {
+      console.error(err)
+    }
   },
   chefsSelectOptions(callback) {
+    try {
     db.query(`SELECT name, id FROM chefs`, function (err, results) {
       if (err) throw "Database Error!";
 
       callback(results.rows);
-    });
+    });  
+    } catch (err) {
+      console.error(err)
+    }
   },
   paginate(params) {
+    try {
     const { filter, limit, offset, callback } = params;
 
     let query = "",
@@ -114,6 +147,9 @@ module.exports = {
     db.query(query, [limit, offset], function (err, results) {
       if (err) throw `Database Error! ${err}`;
       callback(results.rows);
-    });
+    });  
+    } catch (err) {
+      console.error(err)
+    }  
   },
 };

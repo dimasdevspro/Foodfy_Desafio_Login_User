@@ -29,6 +29,7 @@ module.exports = {
     return res.render("about");
   },
   async indexRecipesHome(req, res) {
+    try{
     const userAdmin = req.session;
     let { filter, page, limit } = req.query;
     page = page || 1;
@@ -60,9 +61,13 @@ module.exports = {
         });
       },
     };
-    await Recipe.search(params);
+    await Recipe.search(params);  
+    }catch(err){
+      console.error(err)
+    } 
   },
   createRecipe(req, res) {
+    try{
     const userAdmin = req.session;
     Recipe.chefsSelectOptions()
       .then(function (results) {
@@ -71,9 +76,13 @@ module.exports = {
       })
       .catch(function (err) {
         throw new Error(err);
-      });
+      });  
+    }catch (err) {
+      console.error(errr)
+    }    
   },
   async postNewRecipe(req, res) {
+    try{
     const keys = Object.keys(req.body);
     for (key of keys) {
       if (req.body[key] == "") {
@@ -92,9 +101,13 @@ module.exports = {
       },
     };
     results = await RecipeFile.create(reqIdsRecipeFile.body);
-    return res.redirect(`recipes/${recipeId}`);
+    return res.redirect(`recipes/${recipeId}`);  
+    }catch (err) {
+      console.error(err)
+    }  
   },
   async showRecipe(req, res) {
+    try {
     const userAdmin = req.session;
     let results = await Recipe.find(req.params.id);
     const recipe = results.rows[0];
@@ -112,9 +125,13 @@ module.exports = {
     } else {
       const dataFile = {};
       return res.render("admin/recipes/show", { recipe, dataFile, userAdmin });
-    }
+    }  
+    } catch (err) {
+      console.error(err)
+    }    
   },
   async editRecipe(req, res) {
+    try {
     const userAdmin = req.session;
     let results = await Recipe.find(req.params.id);
     const recipe = results.rows[0];
@@ -144,9 +161,14 @@ module.exports = {
         chefOptions,
         userAdmin,
       });
+    }  
+    } catch (err) {
+      console.error(err)
     }
+    
   },
   async putRecipe(req, res) {
+    try {
     const keys = Object.keys(req.body);
     for (key of keys) {
       if (req.body[key] == "" && key != "removed_files") {
@@ -174,13 +196,22 @@ module.exports = {
     }
     await Recipe.update(req.body);
     const recipeUpdatedId = req.body.id;
-    return res.redirect(`/recipes/${recipeUpdatedId}`);
+    return res.redirect(`/recipes/${recipeUpdatedId}`);  
+    } catch (err) {
+      console.error(err)
+    }
+    
   },
   async deleteRecipe(req, res) {
+    try {
     const recipeId = req.body;
     await RecipeFile.delete(recipeId.files_id);
     await File.delete(recipeId.files_id);
     await Recipe.delete(recipeId.recipe_id);
-    res.redirect(`/recipes`);
+    res.redirect(`/recipes`);  
+    } catch (err) {
+      console.error(err)
+    }
+    
   },
 };

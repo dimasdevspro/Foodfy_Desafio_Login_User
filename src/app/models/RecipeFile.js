@@ -43,14 +43,18 @@ module.exports = {
     }
   },
   find(id) {
-    return db.query(
+    try {
+     return db.query(
       `
     SELECT recipes_files.*, recipes_files.id AS recipes_files_id
     FROM recipes_files
           WHERE recipes_files.recipes_id = $1
           ORDER BY recipes_id`,
       [id]
-    );
+    );  
+    } catch (err) {
+      console.error(err)
+    }   
   },
   findByFileId(id) {
     try {
@@ -67,6 +71,10 @@ module.exports = {
     }
   },
   delete(id) {
-    return db.query(`DELETE FROM recipes_files WHERE files_id = $1`, [id]);
+    try {
+      return db.query(`DELETE FROM recipes_files WHERE files_id = $1`, [id]);
+    } catch (err) {
+      console.error(err)
+    }
   },
 };

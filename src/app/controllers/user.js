@@ -4,34 +4,62 @@ const mailer = require("../../lib/mailer");
 const { hash } = require("bcryptjs");
 module.exports = {
   registerFormUser(req, res) {
+    try {
     const userAdmin = req.session;
     res.render("session/register.njk", { userAdmin });
+    } catch (err) {
+      console.error(err)
+    }
   },
   async loginForm(req, res) {
-    res.render("session/login.njk");
+    try {
+      res.render("session/login.njk");
+    } catch (err) {
+      console.error(err)
+    }
   },
   async login(req, res) {
-    req.session.userId = req.user.id;
-    return res.redirect("/admin/profile");
+    try {
+      req.session.userId = req.user.id;
+      return res.redirect("/admin/profile");
+    } catch (err) {
+      console.error(err)
+    }
   },
   async listUsers(req, res) {
-    const user = req.session;
-    const usersComuns = await User.findAllUsers();
-    return res.render("session/list.njk", { usersComuns, user });
+    try {
+      const user = req.session;
+      const usersComuns = await User.findAllUsers();
+      return res.render("session/list.njk", { usersComuns, user });
+    } catch (err) {
+      console.error(err)
+    }
   },
   async editUserForm(req, res) {
-    const id = req.params.id;
-    let user = await User.findOneUser({ where: { id } });
-    const userAdmin = req.session;
-    return res.render("session/edit.njk", { user, userAdmin });
+    try {
+      const id = req.params.id;
+      let user = await User.findOneUser({ where: { id } });
+      const userAdmin = req.session;
+      return res.render("session/edit.njk", { user, userAdmin }); 
+    } catch (err) {
+      console.error(err)
+    }
   },
   async postNewUser(req, res) {
-    const userId = await User.create(req.body);
+    try {
+   const userId = await User.create(req.body);
     req.session.userId = userId;
-    return res.redirect("/admin/users/list");
+    return res.redirect("/admin/users/list");   
+    } catch (err) {
+      console.log(err)
+    }
   },
   forgotpasswordForm(req, res) {
-    return res.render("session/forgot-password.njk");
+    try {
+      return res.render("session/forgot-password.njk");
+    } catch (err) {
+      console.error(err)
+    }
   },
   async putUser(req, res) {
     try {
@@ -108,12 +136,16 @@ module.exports = {
     }
   },
   async resetPasswordForm(req, res) {
-    let reset_token = req.query.token;
+    try {
+      let reset_token = req.query.token;
     const user = await User.findOneUser({ where: { reset_token } });
     return res.render("session/password-reset.njk", {
       token: req.query.token,
       user,
     });
+    } catch (err) {
+      console.error(err)
+    }
   },
   async resetPassword(req, res) {
     const user = req.user;
