@@ -10,57 +10,57 @@
             <i class="material-icons">add</i>
         </div>
     </div>
-</div>
-<div id="photos-preview">
-    {% for files in dataFile%}
-            <div class="photo" id="{{files.file_id}}">
-                <img src="{{files.src}}" alt="{{files.filename}}">
-                <i class="material-icons" onclick="PhotosUpload.removeOldPhoto(event)">
-                close
-                </i>
-            </div>
-        <input type="hidden" name="removed_files">
-    {% endfor %}
-</div>
-<div class="field">
-    <label for="">
-    Titulo
-    </label>
-    <input type="text" name="title" id="tit" value="{{recipe.title}}">
-</div>
-<div class="field">
-    <label for="">
-    Chef
-    </label>
-    <select name="chef">
-        {% for chefs in chefOptions %}
-            <option value="{{chefs.id}}" {% if recipe.author == chefs.name %} selected="selected" {% endif %}>
-            {{chefs.name}}
-            </option>
+    <div id="photos-preview">
+        {% for files in dataFile%}
+                <div class="photo" id="{{files.file_id}}">
+                    <img src="{{files.src}}" alt="{{files.filename}}">
+                    <i class="material-icons" onclick="PhotosUpload.removeOldPhoto(event)">
+                    close
+                    </i>
+                </div>
+            <input type="hidden" name="removed_files">
         {% endfor %}
-    </select>
-</div>
-<div class="field" id="ingredients">
-    <label for="ingredients">
-    Ingredientes
-    </label>
-    <div class="ingredients">
-    <input type="text" name="ingredients" id="ing" value="{{recipe.ingredients}}">
     </div>
-</div>
-<button type="button" class="add-ingredient">Adicionar novo ingrediente</button>
-<div class="field" id="preparations">
-    <label for="preparation">
-    Modo de preparo
-    </label>
-    <div class="preparations">
-    <input type="text" name="preparations" id="prep" value="{{recipe.preparations}}">
+    <div class="field">
+        <label for="">
+        Titulo
+        </label>
+        <input type="text" name="title" id="tit" value="{{recipe.title}}">
     </div>
-</div>
-<button type="button" class="add-preparation">Adicionar novo passo</button>
-<div class="field">
-    <label for="add-info">
-    Informações adicionais
-    </label>
-    <textarea type="text" name="informations" id="info">{{recipe.informations}}</textarea>
+    <div class="field">
+        <label for="">
+        Chef
+        </label>
+        <select name="chef">
+            {% for chefs in chefOptions %}
+                <option value="{{chefs.id}}" {% if recipe.author == chefs.name %} selected="selected" {% endif %}>
+                {{chefs.name}}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="field" id="ingredients">
+        <label for="ingredients">
+        Ingredientes
+        </label>
+        <div class="ingredients">
+        <input type="text" name="ingredients" id="ing" value="{{recipe.ingredients}}">
+        </div>
+    </div>
+    <button type="button" class="add-ingredient">Adicionar novo ingrediente</button>
+    <div class="field" id="preparations">
+        <label for="preparation">
+        Modo de preparo
+        </label>
+        <div class="preparations">
+        <input type="text" name="preparations" id="prep" value="{{recipe.preparations}}">
+        </div>
+    </div>
+    <button type="button" class="add-preparation">Adicionar novo passo</button>
+    <div class="field">
+        <label for="add-info">
+        Informações adicionais
+        </label>
+        <textarea type="text" name="informations" id="info">{{recipe.informations}}</textarea>
+    </div>
 </div>
