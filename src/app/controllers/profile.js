@@ -12,15 +12,21 @@ module.exports = {
   async putProfile(req, res) {
     try {
       let { name, email, is_admin } = req.body;
-      await User.update(req.body.id, {
-        name,
-        email,
-        is_admin,
-      });
-      return res.render("session/profile", {
-        user: req.body,
-        success: "Conta atualizada com sucesso!",
-      });
+      if(is_admin == on){
+        is_admin == true
+      } else{
+        is_admin == false
+      }
+      console.log(is_admin)
+      // await User.update(req.body.id, {
+      //   name,
+      //   email,
+      //   is_admin,
+      // });
+      // return res.render("session/profile", {
+      //   user: req.body,
+      //   success: "Conta atualizada com sucesso!",
+      // });
     } catch (err) {
       return res.render("session/profile", {
         error: "Algum erro aconteceu!",
