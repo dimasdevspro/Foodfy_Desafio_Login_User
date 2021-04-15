@@ -22,11 +22,5 @@
     "pg": "^8.5.1",
     "session": "^0.1.0",
     "src": "^1.1.2"
-  },
-  "devDependencies": {
-    "browser-sync": "^2.26.13",
-    "gh-pages": "^3.1.0",
-    "nodemon": "^2.0.6",
-    "npm-run-all": "^4.1.5"
   }
 }
