@@ -1,7 +1,6 @@
 {% extends "layout.njk" %}
 
 {% block content %}
-
   <div id="admin-users">   
     <div class="header user">
       <p>Usuários</p>
@@ -13,17 +12,26 @@
              <p id="user-name">{{userComun.name}}</p>
              <p id="user-email">{{userComun.email}}</p>
           <form class="link-user">
-            <a id="button-user-edit" href="/admin/profile/{{userComun.id}}/edit">Editar</a>
-          {# <button type="submit" id="button-user-edit" method="post" action="/admin/profile/{{userComun.id}}/edit">Editar</button> #}
-          </form>
+            <a id="button-user-edit" href="/admin/profile/{{userComun.id}}/edit">Editar</a>         
+          </form id="form-delete">
           {% if userComun.is_admin == false %} 
-          <div class="link-user">
-          <button id="button-user-delete" type="submit" method="post" action="/admin/users/delete?_method=DELETE">Deletar</a>      
-          </div>
+          <form action=""> 
+          <button id="button-user-delete" type="submit">Deletar</a>   
+          <input type="hidden" name="id" value="{{userComun.id }}">     
+          </form>
           {% endif %}
         </div>
       {% endfor %}
     </div>  
   </div>
+  <script>
+    const formDelete = document.querySelector("#form-delete");
+    formDelete.addEventListener("submit", function (event) {
+      const confirmation = confirm("Deseja Deletar?")
+      if (! confirmation) {
+        event.preventDefault();
+      }
+    })
+  </script>
   </div>
 {% endblock %}

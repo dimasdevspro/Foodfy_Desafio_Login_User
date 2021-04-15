@@ -34,7 +34,7 @@
 [↩](#indice)
 
 <h4> 	
-Em andamento.
+Finalizado! ;)
 </h4>
 
 ### Histórico do Projeto 
@@ -69,7 +69,7 @@ Em andamento.
 ### Demonstração da Aplicação 
 [↩](#indice)
 
-Não disponível.
+<h1 align="center"><img src="screenshots/Foodfy_Login_User.gif" height="350" weigth="550"></h1>
 
 ### Pré-requisitos 
 [↩](#indice)

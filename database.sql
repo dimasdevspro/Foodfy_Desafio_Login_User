@@ -1,3 +1,16 @@
+"scripts": {
+    "debug": "nodemon --inspect=0.0.0.0:9229 src/server.js",
+    "start": "npm-run-all -p nodemon browser-sync",
+    "nodemon": "nodemon src/server.js",
+    "browser-sync": "browser-sync start --proxy http://localhost:3338 --files 'public, src/app, src/config, src/lib'"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.13",
+    "gh-pages": "^3.1.0",
+    "nodemon": "^2.0.6",
+    "npm-run-all": "^4.1.5"
+  }
+
 CREATE DATABASE foodfy;
 
 CREATE TABLE "recipes" (
