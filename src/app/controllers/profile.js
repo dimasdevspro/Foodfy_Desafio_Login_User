@@ -4,7 +4,7 @@ module.exports = {
     try {
       const { user } = req;
       req.session.is_admin = user.is_admin;
-      return res.render("session/index", { user });
+      return res.render("session/profile", { user });
     } catch (err) {
       console.error(err);
     }
@@ -17,12 +17,12 @@ module.exports = {
         email,
         is_admin,
       });
-      return res.render("session/index", {
+      return res.render("session/profile", {
         user: req.body,
         success: "Conta atualizada com sucesso!",
       });
     } catch (err) {
-      return res.render("session/index", {
+      return res.render("session/profile", {
         error: "Algum erro aconteceu!",
       });
     }
