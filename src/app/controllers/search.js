@@ -23,15 +23,14 @@ module.exports = {
               i
             ].path.replace("public", "")}`),
               (recipes[i].author = recipes[i].name);
-          }
-        
+          }   
           return res.render("admin/recipes/index", {
             recipes,
             pagination,
             filter,
           });
         },
-      };
+      };     
       await Recipe.search(params);
     } catch (err) {
       console.error(err);
