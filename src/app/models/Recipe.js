@@ -121,7 +121,7 @@ module.exports = {
             ) AS total`;
     }
     query = `
-       SELECT *, ${totalQuery}
+    SELECT DISTINCT on(recipes_files.recipes_id) recipes.title, chefs.name AS author, files.id as fileid, files.path, files.filename, recipes_files.recipes_id, ${totalQuery}
        FROM recipes_files 
        FULL OUTER JOIN files 
        ON recipes_files.files_id = files.id 
@@ -130,7 +130,7 @@ module.exports = {
        FULL OUTER JOIN chefs 
        ON recipes.chef_id = chefs.id
        ${filterQuery}
-       ORDER BY recipes.created_at
+       
        LIMIT $1 OFFSET $2
         `;
     return db.query(query, [limit, offset], function (err, results) {
@@ -182,7 +182,7 @@ module.exports = {
             ) AS total`;
     }
     query = `
-        SELECT *, ${totalQuery}
+    SELECT DISTINCT on(recipes_files.recipes_id) recipes.title, chefs.name, files.id as fileid, files.path, files.filename, recipes_files.recipes_id, ${totalQuery}
         FROM recipes_files 
         FULL OUTER JOIN files 
         ON recipes_files.files_id = files.id 
@@ -191,12 +191,12 @@ module.exports = {
         FULL OUTER JOIN chefs 
         ON recipes.chef_id = chefs.id
         ${filterQuery}
-        ORDER BY recipes.updated_at DESC
+        
         LIMIT $1 OFFSET $2
         `;
     return db.query(query, [limit, offset], function (err, results) {
       if (err) throw `Database Error! ${err}`;
-      
+ 
       callback(results.rows);
     });  
     } catch (err) {
