@@ -28,9 +28,9 @@ module.exports = {
   },
   async listUsers(req, res) {
     try {
-      const user = req.session;
+      const userAdmin = req.session;
       const usersComuns = await User.findAllUsers();
-      return res.render("session/list.njk", { usersComuns, user });
+      return res.render("session/list.njk", { usersComuns, userAdmin });
     } catch (err) {
       console.error(err)
     }
