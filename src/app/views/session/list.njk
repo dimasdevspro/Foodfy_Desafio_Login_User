@@ -14,7 +14,7 @@
           <form class="link-user">
             <a id="button-user-edit" href="/admin/profile/{{userComun.id}}/edit">Editar</a>         
           </form id="form-delete">
-          {% if userComun.is_admin == false %} 
+          {% if userComun.is_admin == false and userAdmin.is_admin == true %} 
           <form action=""> 
           <button id="button-user-delete" type="submit">Deletar</a>   
           <input type="hidden" name="id" value="{{userComun.id }}">     
