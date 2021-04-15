@@ -1,6 +1,6 @@
 @keyframes hidemessage {
     to {
-        top: -50px;
+        top: -250px;
         opacity: 0
     }
 }
@@ -9,13 +9,13 @@
     display: flex;
     justify-content: center;
     padding: 16px;
-    position: absolute;
+    position: relative;
     width: 100%;
     color: white;
-    top: 0;
+    top: 0px;
     opacity: 1;
 
-    animation: hidemessage 400ms 3s ease-out forwards;
+    animation: hidemessage 1s 1s ease-out forwards;
 }
 
 .messages.error {

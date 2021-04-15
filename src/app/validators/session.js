@@ -5,7 +5,7 @@ function verifyFormCreateUser(req, res, next) {
    const keys = Object.keys(req.body);
   for (key of keys) {
     if (req.body[key] == "") {
-      res.send("Please, fill all fields!");
+      res.send("Por favor, preencha todos os campos!");
     }
   }
   let { password, passwordRepeat } = req.body;
@@ -33,7 +33,7 @@ async function verifyLogin(req, res, next) {
   if (!passed)
     return res.render("session/login", {
       user: req.body,
-      error: "Senha incorreta.",
+      error: "Senha incorreta!",
     });
 
   req.user = user;
@@ -49,7 +49,7 @@ async function verifyLogged(req, res, next) {
   const user = await User.findOneUser({ where: { id } });
   if (!user)
     return res.render("session/profile.njk", {
-      error: "Usuário não encontrado!"
+      error: "Usuário não cadastrado!"
     });
   req.user = user;
   next();  
@@ -63,7 +63,7 @@ async function existeEmail(req, res, next) {
   const { email } = req.body;
   const user = await User.findOneUser({ where: { email } });
   if (!user)
-    return res.render("session/login", {
+    return res.render("session/forgot-password", {
       user: req.body,
       error: "Usuário não cadastrado!",
     });
@@ -88,7 +88,7 @@ async function verifyDataForResetPassword(req, res, next) {
       return res.render("session/reset-password", {
         user: req.body,
         token,
-        error: "A senha e a repetição das senhas estão incorretas",
+        error: "A senha e a repetição da senha estão incorretas",
       });
     if (token != user.reset_token)
       return res.render("session/password-reset", {
