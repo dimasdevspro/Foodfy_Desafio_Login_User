@@ -5,12 +5,12 @@ const admin = require("./admin");
 const chefs = require("./chefs");
 const recipes = require("./recipes");
 
-routes.get("/", recipesController.home);
+routes.get("https://foodfy-dap.herokuapp.com/", recipesController.home);
 
-routes.use("/admin", admin);
-routes.use("/chefs", chefs);
-routes.use("/recipes", recipes);
+routes.use("https://foodfy-dap.herokuapp.com/admin", admin);
+routes.use("https://foodfy-dap.herokuapp.com/chefs", chefs);
+routes.use("https://foodfy-dap.herokuapp.com/recipes", recipes);
 
-routes.get("/about", recipesController.aboutSite);
+routes.get("https://foodfy-dap.herokuapp.com/about", recipesController.aboutSite);
 
 module.exports = routes;
