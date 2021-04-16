@@ -2,6 +2,7 @@ const Recipe = require("../models/Recipe");
 module.exports = {
   async indexRecipes(req, res) {
     try {
+      const userAdmin = req.session;
       let { filter, page, limit } = req.query;
       filter;
       page = page || 1;
@@ -25,9 +26,11 @@ module.exports = {
               (recipes[i].author = recipes[i].name);
           }   
           return res.render("admin/recipes/index", {
+            
             recipes,
             pagination,
             filter,
+            userAdmin
           });
         },
       };     

@@ -3,6 +3,7 @@ const File = require("../models/File");
 const RecipeFile = require("../models/RecipeFile");
 module.exports = {
   async home(req, res) {
+    const userAdmin = req.session;
     let results = await Recipe.queryAllRecipes();
     let arrayRecipes = [];
     const dataRecipe = {
@@ -20,7 +21,7 @@ module.exports = {
           };
           arrayRecipes.push(dataRecipes);
         }
-        res.render("home", { arrayRecipes });
+        res.render("home", { arrayRecipes, userAdmin });
       },
     };
     dataRecipe.creatorData(results.rows);
@@ -31,6 +32,7 @@ module.exports = {
   async indexRecipesHome(req, res) {
     try{
     const userAdmin = req.session;
+    console.log(userAdmin)
     let { filter, page, limit } = req.query;
     page = page || 1;
     limit = limit || 6;
