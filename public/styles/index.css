@@ -16,7 +16,6 @@ body {
   width: 100%;
   height: 80px;
   display: grid;
-  position: relative;
   grid-template-columns: 0.25fr 1fr;
   background-color: black;
 }
