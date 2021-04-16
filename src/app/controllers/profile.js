@@ -19,15 +19,15 @@ module.exports = {
         is_admin == false
       }
       console.log(is_admin)
-      // await User.update(req.body.id, {
-      //   name,
-      //   email,
-      //   is_admin,
-      // });
-      // return res.render("session/profile", {
-      //   user: req.body,
-      //   success: "Conta atualizada com sucesso!",
-      // });
+      await User.update(req.body.id, {
+        name,
+        email,
+        is_admin,
+      });
+      return res.render("session/profile", {
+        user: req.body,
+        success: "Conta atualizada com sucesso!",
+      });
     } catch (err) {
       return res.render("session/profile", {
         error: "Algum erro aconteceu!",
