@@ -3,8 +3,9 @@ module.exports = {
   async showProfile(req, res) {
     try {
       const { user } = req;
+      const userAdmin = req.session
       req.session.is_admin = user.is_admin;
-      return res.render("session/profile", { user });
+      return res.render("session/profile", { user, userAdmin });
     } catch (err) {
       console.error(err);
     }
