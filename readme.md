@@ -1,7 +1,5 @@
 <h1 align="center"><img src="assets/logo.png" height="50" weigth="50"></h1>
 
-<p align="center"><img src="https://img.shields.io/badge/<HTML>-<green>"> <img src="https://img.shields.io/badge/<CSS>-<green>"> <img src="https://img.shields.io/badge/<Javascript>-<green>"> 
-
 ### Indice
 <!--ts-->
 * [Sobre](#sobre)
